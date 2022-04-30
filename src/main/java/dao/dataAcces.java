@@ -17,7 +17,11 @@ public class dataAcces {
 
     //region Insert Data
     public static void InsertBook(bookModel book){
+        throw new UnsupportedOperationException();
+    }
 
+    public static void InsertAuthor(authorModel author){
+        throw new UnsupportedOperationException();
     }
     //endregion
 }
