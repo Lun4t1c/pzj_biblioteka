@@ -1,6 +1,6 @@
 package models;
 
-public class readerModel {
+public class GenreModel {
     //region Attributes
     private int Id;
     private String name;

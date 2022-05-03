@@ -2,13 +2,13 @@ package models;
 
 import java.util.List;
 
-public class bookModel {
+public class BookModel {
     //region Attributes
     private int id;
     private String title;
     private int publicationYear;
-    private authorModel author;
-    private List<genreModel> genres;
+    private AuthorModel author;
+    private List<GenreModel> genres;
     //endregion
 
     //region Get/Set
@@ -33,17 +33,17 @@ public class bookModel {
         this.publicationYear = publicationYear;
     }
 
-    public authorModel getAuthor() {
+    public AuthorModel getAuthor() {
         return author;
     }
-    public void setAuthor(authorModel author) {
+    public void setAuthor(AuthorModel author) {
         this.author = author;
     }
     //endregion
 
 
     //region Methods
-    public void borrow(readerModel reader){
+    public void borrow(ReaderModel reader){
 
     }
     //endregion

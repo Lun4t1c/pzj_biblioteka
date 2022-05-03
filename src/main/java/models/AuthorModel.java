@@ -1,6 +1,6 @@
 package models;
 
-public class authorModel {
+public class AuthorModel {
     //region Attributes
     private int Id;
     private String FirstName;

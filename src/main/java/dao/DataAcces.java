@@ -5,10 +5,10 @@ import models.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class dataAcces {
+public class DataAcces {
     //region Get Data
-    public static List<bookModel> GetAllBooks(){
-        List<bookModel> books = new ArrayList<>();
+    public static List<BookModel> GetAllBooks(){
+        List<BookModel> books = new ArrayList<>();
 
         return  books;
     }
@@ -16,11 +16,11 @@ public class dataAcces {
 
 
     //region Insert Data
-    public static void InsertBook(bookModel book){
+    public static void InsertBook(BookModel book){
         throw new UnsupportedOperationException();
     }
 
-    public static void InsertAuthor(authorModel author){
+    public static void InsertAuthor(AuthorModel author){
         throw new UnsupportedOperationException();
     }
     //endregion
