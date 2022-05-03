@@ -3,6 +3,7 @@ package com.pzj;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -52,5 +53,13 @@ public class ViewSwitcher {
         catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static Parent getView(View view) throws IOException{
+        Parent out = FXMLLoader.load(
+          ViewSwitcher.class.getResource(view.getFileName())
+        );
+
+        return  out;
     }
 }
