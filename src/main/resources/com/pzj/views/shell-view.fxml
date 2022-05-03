@@ -13,9 +13,8 @@
 
     <VBox>
         <HBox>
-            <Button text="Button 1" onAction="#onButton1Click" minWidth="100"/>
-            <Button text="Button 2" onAction="#onButton2Click"/>
-            <Button text="Button 3"/>
+            <Button text="Library" onAction="#onMainLibraryViewButton" minWidth="100"/>
+            <Button text="Borrow book" onAction="#onBorrowBookViewButton"/>
         </HBox>
 
         <BorderPane fx:id="mainPane"/>

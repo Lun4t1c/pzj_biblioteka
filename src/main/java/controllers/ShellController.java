@@ -10,11 +10,14 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 
 public class ShellController {
+    //region Attributes
+
+    //endregion
+
     //region FXML Controls
     @FXML
     private BorderPane mainPane;
     //endregion
-
 
     //region Constructor
     public ShellController(){
@@ -22,37 +25,45 @@ public class ShellController {
     }
     //endregion
 
-
     //region Methods
-
-    //endregion
-
-
-    //region Button clicks
-    @FXML
-    protected void onButton1Click(){
-        System.out.println("BENG");
-
+    /**
+     * Helper function to avoid code redundancy in corresponding methods
+     * @param view View to display
+     */
+    private void displayView(View view){
         Parent parent = null;
         try {
-            parent = ViewSwitcher.getView(View.BOOK_INSPECTOR);
+            parent = ViewSwitcher.getView(view);
             mainPane.setCenter(parent);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @FXML
-    protected void onButton2Click(){
-        System.out.println("BENG");
+    /**
+     * Display main library view
+     */
+    private void displayMainLibraryView(){
+        displayView(View.MAIN_LIBRARY);
+    }
 
-        Parent parent = null;
-        try {
-            parent = ViewSwitcher.getView(View.BORROW_BOOK);
-            mainPane.setCenter(parent);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    /**
+     * Display book borrowing view
+     */
+    private void displayBorrowBookView(){
+        displayView(View.BORROW_BOOK);
+    }
+    //endregion
+
+    //region Button clicks
+    @FXML
+    protected void onMainLibraryViewButton(){
+        displayMainLibraryView();
+    }
+
+    @FXML
+    protected void onBorrowBookViewButton(){
+        displayBorrowBookView();
     }
     //endregion
 }
