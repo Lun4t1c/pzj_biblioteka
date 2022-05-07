@@ -2,6 +2,7 @@ package controllers;
 
 import com.pzj.View;
 import com.pzj.ViewSwitcher;
+import dao.DataAcces;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
@@ -21,7 +22,7 @@ public class ShellController {
 
     //region Constructor
     public ShellController(){
-
+        DataAcces.testConnection();
     }
     //endregion
 

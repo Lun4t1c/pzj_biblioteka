@@ -4,35 +4,23 @@ import com.pzj.View;
 import com.pzj.ViewSwitcher;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 public class MainLibraryController {
     //region FXML Controls
     @FXML
-    private Label testLabel;
+    private TextField SearchTextField;
     //endregion
 
 
     //region Methods
-    private void testMethod(){
-        testLabel.setText("Test text");
+    private void filterBooks(){
+
     }
     //endregion
 
 
     //region Button clicks
-    @FXML
-    protected void onTestButtonClick(){
-        testMethod();
-    }
 
-    @FXML
-    protected void onViewSwitchTestClick(){
-        ViewSwitcher.switchTo(View.BOOK_INSPECTOR);
-    }
-
-    @FXML
-    protected void onNewWindowTestClick(){
-        ViewSwitcher.openWindow(View.BORROW_BOOK);
-    }
     //endregion
 }
