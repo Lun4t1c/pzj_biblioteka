@@ -10,6 +10,13 @@ import java.util.List;
 import java.util.Properties;
 
 public class DataAcces {
+
+    //region Database Credentials
+    final static String url = "jdbc:postgresql://ec2-176-34-211-0.eu-west-1.compute.amazonaws.com:5432/d6rtrjpgj3e5e4";
+    final static String user = "edztrbhrtbejew";
+    final static String password = "c830a89bd18dfe84ce7dae9566b2182d426ddca0edf031cb9dc3b0ef713f27fe";
+    //endregion
+
     public static ObservableList<BookModel> getDummyBooks(){
         ObservableList<BookModel> books = FXCollections.observableArrayList();
 
@@ -37,10 +44,9 @@ public class DataAcces {
 
     //region Utils
     public static void testConnection(){
-        String url = "jdbc:postgresql://ec2-176-34-211-0.eu-west-1.compute.amazonaws.com:5432/d6rtrjpgj3e5e4";
         Properties prop = new Properties();
-        prop.setProperty("user","edztrbhrtbejew");
-        prop.setProperty("password","c830a89bd18dfe84ce7dae9566b2182d426ddca0edf031cb9dc3b0ef713f27fe");
+        prop.setProperty("user", user);
+        prop.setProperty("password",password);
 
         Connection conn = null;
         try {
