@@ -29,7 +29,7 @@ public class BorrowBookController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Load books from database
-        booksComboBox.setItems(DataAcces.getDummyBooks());
+        booksComboBox.setItems(DataAcces.getAllBooks());
 
         // Configure custom booksComboBox cell factory
         booksComboBox.setCellFactory(param -> new ListCell<BookModel>() {
@@ -42,7 +42,7 @@ public class BorrowBookController implements Initializable {
                 } else {
                     String text = "";
                     text += item.getTitle() + " ";
-                    text += "(" + item.getPublicationYear() + ")";
+                    text += "(" + item.getPublication_date() + ")";
 
                     setText(text);
                 }

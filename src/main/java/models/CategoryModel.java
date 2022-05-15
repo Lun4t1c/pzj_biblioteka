@@ -1,17 +1,17 @@
 package models;
 
-public class GenreModel {
+public class CategoryModel {
     //region Attributes
-    private int Id;
+    private int id;
     private String name;
     //endregion
 
     //region Get/Set
     public int getId() {
-        return Id;
+        return id;
     }
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
