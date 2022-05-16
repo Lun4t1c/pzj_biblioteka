@@ -1,11 +1,11 @@
 package models;
 
-public class CategoryModel {
+public class LanguageModel {
     //region Attributes
     private int id;
     private String name;
 
-    public CategoryModel(int id, String name) {
+    public LanguageModel(int id, String name) {
         setId(id);
         setName(name);
     }

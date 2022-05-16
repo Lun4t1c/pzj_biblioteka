@@ -1,7 +1,6 @@
 package controllers;
 
-import dao.DataAcces;
-import javafx.collections.ObservableList;
+import dao.DataAccess;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -29,7 +28,7 @@ public class BorrowBookController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Load books from database
-        booksComboBox.setItems(DataAcces.getAllBooks());
+        booksComboBox.setItems(DataAccess.getAllBooks());
 
         // Configure custom booksComboBox cell factory
         booksComboBox.setCellFactory(param -> new ListCell<BookModel>() {

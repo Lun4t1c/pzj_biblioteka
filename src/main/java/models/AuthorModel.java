@@ -1,5 +1,7 @@
 package models;
 
+import java.time.LocalDate;
+
 public class AuthorModel {
     //region Attributes
     private int id;
@@ -8,6 +10,18 @@ public class AuthorModel {
     private String remarks;
     //endregion
 
+    //region Methods
+    public AuthorModel(int id, String name, String surname, String remarks) {
+        try {
+            setId(id);
+            setName(name);
+            setSurname(surname);
+            setRemarks(remarks);
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+    }
+    //endregion
     //region Get/Set
     public int getId() {
         return id;
@@ -19,15 +33,15 @@ public class AuthorModel {
     public void setName(String name) {
         this.name = name;
     }
-    public void setSurname(String name) { this.name = name; }
     public String getSurname() {
         return surname;
     }
+    public void setSurname(String name) { this.name = name; }
     public String getFullName(){
         return name + " " + surname;
     }
     public String getRemarks() { return remarks; }
-    public void setRemarks() { this.remarks = remarks; }
+    public void setRemarks(String remarks) { this.remarks = remarks; }
     //endregion
 
 

@@ -12,7 +12,6 @@ public class BookModel {
     private LocalDate publication_date;
     private int pages;
     private AuthorModel author;
-    private List<CategoryModel> categories;
     //endregion
 
     //region Methods
@@ -24,7 +23,7 @@ public class BookModel {
             setPublication_date(LocalDate.parse(publication_date));
             setPages(pages);
         } catch (Exception ex) {
-            System.out.println("Exception: " + ex.getMessage());
+            System.out.println("BookModel Exception: " + ex.getMessage());
         }
     }
     //endregion
