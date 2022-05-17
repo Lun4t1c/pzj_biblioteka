@@ -1,37 +1,47 @@
 package models;
 
+import java.time.LocalDate;
+
 public class AuthorModel {
     //region Attributes
-    private int Id;
-    private String FirstName;
-    private String LastName;
+    private int id;
+    private String name;
+    private String surname;
+    private String remarks;
     //endregion
 
+    //region Methods
+    public AuthorModel(int id, String name, String surname, String remarks) {
+        try {
+            setId(id);
+            setName(name);
+            setSurname(surname);
+            setRemarks(remarks);
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+    }
+    //endregion
     //region Get/Set
     public int getId() {
-        return Id;
+        return id;
     }
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
-
-    public String getFirstName() {
-        return FirstName;
+    public String getName() { return name; }
+    public void setName(String name) {
+        this.name = name;
     }
-    public void setFirstName(String firstName) {
-        FirstName = firstName;
+    public String getSurname() {
+        return surname;
     }
-
-    public String getLastName() {
-        return LastName;
-    }
-    public void setLastName(String lastName) {
-        LastName = lastName;
-    }
-
+    public void setSurname(String name) { this.name = name; }
     public String getFullName(){
-        return FirstName + " " + LastName;
+        return name + " " + surname;
     }
+    public String getRemarks() { return remarks; }
+    public void setRemarks(String remarks) { this.remarks = remarks; }
     //endregion
 
 

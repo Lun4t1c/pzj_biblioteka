@@ -1,11 +1,8 @@
 package controllers;
 
-import com.pzj.View;
-import com.pzj.ViewSwitcher;
-import dao.DataAcces;
+import dao.DataAccess;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import models.BookModel;
 
@@ -17,7 +14,7 @@ public class MainLibraryController {
 
 
     //region Attributes
-    ObservableList<BookModel> books = DataAcces.getAllBooks();
+    ObservableList<BookModel> books = DataAccess.getAllBooks();
     //endregion]
 
 

@@ -1,17 +1,22 @@
 package models;
 
-public class GenreModel {
+public class LanguageModel {
     //region Attributes
-    private int Id;
+    private int id;
     private String name;
+
+    public LanguageModel(int id, String name) {
+        setId(id);
+        setName(name);
+    }
     //endregion
 
     //region Get/Set
     public int getId() {
-        return Id;
+        return id;
     }
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
