@@ -3,7 +3,8 @@ package com.pzj;
 public enum View {
     MAIN_LIBRARY("views/main-library-view.fxml"),
     BOOK_INSPECTOR("views/book-inspector-view.fxml"),
-    BORROW_BOOK("views/borrow-book-view.fxml");
+    BORROW_BOOK("views/borrow-book-view.fxml"),
+    ADD_BOOK("views/add-book-view.fxml"),;
 
     private String fileName;
 
