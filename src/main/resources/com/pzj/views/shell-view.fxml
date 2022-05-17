@@ -15,6 +15,7 @@
         <HBox>
             <Button text="Library" onAction="#onMainLibraryViewButton" minWidth="100"/>
             <Button text="Borrow book" onAction="#onBorrowBookViewButton"/>
+            <Button text="Add book" onAction="#onAddBookViewButton"/>
         </HBox>
 
         <BorderPane fx:id="mainPane"/>

@@ -21,7 +21,7 @@ public class ShellController {
 
     //region Constructor
     public ShellController(){
-        DataAccess.testConnection();
+
     }
     //endregion
 
@@ -53,6 +53,10 @@ public class ShellController {
     private void displayBorrowBookView(){
         displayView(View.BORROW_BOOK);
     }
+
+    private void displayAddBookView(){
+        displayView(View.ADD_BOOK);
+    }
     //endregion
 
     //region Button clicks
@@ -64,6 +68,11 @@ public class ShellController {
     @FXML
     protected void onBorrowBookViewButton(){
         displayBorrowBookView();
+    }
+
+    @FXML
+    protected void onAddBookViewButton(){
+        displayAddBookView();
     }
     //endregion
 }
