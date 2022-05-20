@@ -1,21 +1,26 @@
 package models;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.List;
 
 public class BookModel {
     //region Attributes
     private int id;
     private String isbn;
     private String title;
+    private int publisher_id;
+    private int author_id;
+    private int category_id;
     private LocalDate publication_date;
+    private int lang_id;
     private int pages;
-    private AuthorModel author;
     //endregion
 
     //region Methods
-    public BookModel(int id, String isbn, String title, String publication_date, int pages) {
+    public BookModel(int id,
+                     String isbn,
+                     String title,
+                     String publication_date,
+                     int pages) {
         try {
             setId(id);
             setIsbn(isbn);
@@ -46,6 +51,30 @@ public class BookModel {
         this.title = title;
     }
 
+    public int getPublisher_id() {
+        return publisher_id;
+    }
+
+    public void setPublisher_id(int publisher_id) {
+        this.publisher_id = publisher_id;
+    }
+
+    public int getAuthor_id() {
+        return author_id;
+    }
+
+    public void setAuthor_id(int author_id) {
+        this.author_id = author_id;
+    }
+
+    public int getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(int category_id) {
+        this.category_id = category_id;
+    }
+
     public LocalDate getPublication_date() {
         return publication_date;
     }
@@ -53,15 +82,17 @@ public class BookModel {
         this.publication_date = publication_date;
     }
 
+    public int getLang_id() {
+        return lang_id;
+    }
+
+    public void setLang_id(int lang_id) {
+        this.lang_id = lang_id;
+    }
+
     public int getPages() { return pages; }
     public void setPages(int pages) { this.pages = pages; }
 
-    public AuthorModel getAuthor() {
-        return author;
-    }
-    public void setAuthor(AuthorModel author) {
-        this.author = author;
-    }
     //endregion
 
 
