@@ -1,0 +1,7 @@
+package com.pzj;
+
+public enum SortMode {
+    TITLE_ASC, TITLE_DESC,
+    PUBLICATION_DATE_ASC, PUBLICATION_DATE_DESC,
+    AUTHOR_ASC, AUTHOR_DESC
+}

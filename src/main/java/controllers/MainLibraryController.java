@@ -1,5 +1,8 @@
 package controllers;
 
+// TODO searching modes (whole words, case sensitive etc...)
+
+import com.pzj.SortMode;
 import dao.DataAccess;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,9 +28,9 @@ public class MainLibraryController implements Initializable {
 
 
     //region Attributes
-    ObservableList<BookModel> books = DataAccess.getAllBooks();
-    ObservableList<BookModel> filteredBooks = books;
-    final String sortMode = "title";
+    private SortMode sortMode = SortMode.TITLE_ASC;
+    private ObservableList<BookModel> books = DataAccess.getAllBooks();
+    private ObservableList<BookModel> filteredBooks = books;
     //endregion
 
     //region Constructor + Initialize
@@ -57,13 +60,14 @@ public class MainLibraryController implements Initializable {
                 }
             }
         });
+
+        sortBooks();
     }
     //endregion
 
     //region Methods
     private void filterBooks(){
         String searchText = searchTextField.getText();
-        System.out.println("FILTERING " + searchText);
 
         ObservableList<BookModel> tempList = FXCollections.observableArrayList();
 
@@ -80,12 +84,27 @@ public class MainLibraryController implements Initializable {
 
     private void sortBooks(){
         switch (sortMode){
-            case "title"-> sortBooksByTitle();
+            case TITLE_ASC  -> sortBooksByTitleAsc();
+            case TITLE_DESC -> sortBooksByTitleDesc();
+            case PUBLICATION_DATE_ASC   -> sortBooksByPublicationDateAsc();
+            case PUBLICATION_DATE_DESC  -> sortBooksByPublicationDateDesc();
         }
     }
 
-    private void sortBooksByTitle(){
+    private void sortBooksByTitleAsc(){
         Collections.sort(filteredBooks, (b1, b2) -> b1.getTitle().compareTo(b2.getTitle()));
+    }
+
+    private void sortBooksByTitleDesc(){
+        Collections.sort(filteredBooks, (b1, b2) -> b2.getTitle().compareTo(b1.getTitle()));
+    }
+
+    private void sortBooksByPublicationDateAsc(){
+        throw new UnsupportedOperationException("YET TO BE IMLPEMENTED");
+    }
+
+    private void sortBooksByPublicationDateDesc(){
+        throw new UnsupportedOperationException("YET TO BE IMLPEMENTED");
     }
     //endregion
 
