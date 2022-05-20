@@ -1,10 +1,12 @@
 package controllers;
 
 import dao.DataAccess;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.TextField;
 import models.BookModel;
 import models.CopyModel;
 import models.EmployeeModel;
@@ -16,7 +18,7 @@ import java.util.ResourceBundle;
 public class BorrowBookController implements Initializable {
 
     //region Attributes
-
+    private ObservableList<BookModel> books = DataAccess.getAllBooks();
     //endregion
 
     //region FXML Controls
@@ -38,7 +40,7 @@ public class BorrowBookController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Load books from database
-        booksComboBox.setItems(DataAccess.getAllBooks());
+        booksComboBox.setItems(books);
 
         // Configure custom booksComboBox cell factory
         booksComboBox.setCellFactory(param -> new ListCell<BookModel>() {
