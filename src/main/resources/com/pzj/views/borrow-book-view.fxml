@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.BorrowBookController"
-            prefHeight="400.0" prefWidth="600.0"
-            style="-fx-background-color: red;">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BorrowBookController">
 
-    <ComboBox fx:id="booksComboBox" minWidth="100" promptText="Select book"/>
+    <ComboBox fx:id="booksComboBox" minWidth="100" prefHeight="26.0" prefWidth="150.0" promptText="Select book" />
+    <ComboBox fx:id="copiesComboBox" layoutY="112.0" minWidth="100" prefHeight="26.0" prefWidth="150.0" promptText="Select Copy" />
+    <ComboBox fx:id="readerComboBox" layoutY="221.0" prefWidth="150.0" promptText="Select Reader" />
+    <ComboBox fx:id="employeesComboBox" layoutX="329.0" prefWidth="150.0" promptText="Select Employees" />
 
 </AnchorPane>

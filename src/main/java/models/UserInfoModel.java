@@ -17,23 +17,6 @@ abstract public class UserInfoModel {
     //endregion
 
     //region Constructors
-    UserInfoModel(int id,
-                  String login,
-                  String password,
-                  String first_name,
-                  String surname,
-                  String registration_date) {
-        try {
-            setId(id);
-            setLogin(login);
-            setPassword(password);
-            setFirst_name(first_name);
-            setSurname(surname);
-            setRegistration_date(LocalDate.parse(registration_date));
-        } catch (Exception ex) {
-            System.out.println("UserInfoModel Exception: " + ex.getMessage());
-        }
-    }
 
     UserInfoModel(int id,
                   String login,
@@ -45,11 +28,16 @@ abstract public class UserInfoModel {
                   String email,
                   String address,
                   String registration_date) {
-        this(id, login, password, first_name, surname, registration_date);
+        setId(id);
+        setLogin(login);
+        setPassword(password);
+        setFirst_name(first_name);
         setSecond_name(second_name);
+        setSurname(surname);
         setPhone(phone);
         setEmail(email);
         setAddress(address);
+        setRegistration_date(LocalDate.parse(registration_date));
     }
     //endregion
 

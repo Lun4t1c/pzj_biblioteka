@@ -7,7 +7,10 @@ public class PublisherModel {
     private String address;
     private String remarks;
 
-    public PublisherModel(int id, String name, String address, String remarks) {
+    public PublisherModel(int id,
+                          String name,
+                          String address,
+                          String remarks) {
         setId(id);
         setName(name);
         setAddress(address);

@@ -1,13 +1,14 @@
 package models;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class TransactionModel {
     //region Attributes
     private int id;
-    private String copy_id;
-    private String reader_id;
-    private String employee_id;
+    private int copy_id;
+    private int reader_id;
+    private int employee_id;
     private LocalDate reservation_date;
     private LocalDate reservation_term;
     private LocalDate borrow_date;
@@ -18,17 +19,68 @@ public class TransactionModel {
 
     //region Constructors
     public TransactionModel(int id,
-                     String copy_id,
-                     String reader_id,
-                     String employee_id,
-                     LocalDate reservation_date,
-                     LocalDate reservation_term,
-                     LocalDate borrow_date,
-                     LocalDate return_date,
-                     double debt) {
+                            int copy_id,
+                            int reader_id,
+                            int employee_id,
+                            String reservation_date,
+                            String reservation_term,
+                            String borrow_date,
+                            String borrow_term,
+                            String return_date,
+                            double debt) {
         setId(id);
-        this.copy_id = copy_id;
+        setCopy_id(copy_id);
+        setReader_id(reader_id);
+        setEmployee_id(employee_id);
+        setReservation_date(LocalDate.parse(reservation_date));
+        setReservation_term(LocalDate.parse(reservation_term));
+        setBorrow_date(LocalDate.parse(borrow_date));
+        setBorrow_term(LocalDate.parse(borrow_term));
+        setReturn_date(LocalDate.parse(return_date));
+        setDebt(debt);
+    }
+    public TransactionModel(int id,
+                            int copy_id,
+                            int reader_id,
+                            int employee_id,
+                            LocalDate reservation_date,
+                            LocalDate reservation_term,
+                            LocalDate borrow_date,
+                            LocalDate borrow_term,
+                            LocalDate return_date,
+                            double debt) {
+        setId(id);
+        setCopy_id(copy_id);
+        setReader_id(reader_id);
+        setEmployee_id(employee_id);
+        setReservation_date(reservation_date);
+        setReservation_term(reservation_term);
+        setBorrow_date(borrow_date);
+        setBorrow_term(borrow_term);
+        setReturn_date(return_date);
+        setDebt(debt);
+    }
 
+    public TransactionModel(int id,
+                            int copy_id,
+                            int reader_id,
+                            int employee_id,
+                            Date reservation_date,
+                            Date reservation_term,
+                            Date borrow_date,
+                            Date borrow_term,
+                            Date return_date,
+                            double debt) {
+        setId(id);
+        setCopy_id(copy_id);
+        setReader_id(reader_id);
+        setEmployee_id(employee_id);
+        setReservation_date(LocalDate.parse((CharSequence) reservation_date));
+        setReservation_term(LocalDate.parse((CharSequence) reservation_term));
+        setBorrow_date(LocalDate.parse((CharSequence) borrow_date));
+        setBorrow_term(LocalDate.parse((CharSequence) borrow_term));
+        setReturn_date(LocalDate.parse((CharSequence) return_date));
+        setDebt(debt);
     }
     //endregion
 
@@ -41,27 +93,27 @@ public class TransactionModel {
         this.id = id;
     }
 
-    public String getCopy_id() {
+    public int getCopy_id() {
         return copy_id;
     }
 
-    public void setCopy_id(String copy_id) {
+    public void setCopy_id(int copy_id) {
         this.copy_id = copy_id;
     }
 
-    public String getReader_id() {
+    public int getReader_id() {
         return reader_id;
     }
 
-    public void setReader_id(String reader_id) {
+    public void setReader_id(int reader_id) {
         this.reader_id = reader_id;
     }
 
-    public String getEmployee_id() {
+    public int getEmployee_id() {
         return employee_id;
     }
 
-    public void setEmployee_id(String employee_id) {
+    public void setEmployee_id(int employee_id) {
         this.employee_id = employee_id;
     }
 
