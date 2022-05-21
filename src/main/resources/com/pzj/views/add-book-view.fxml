@@ -13,7 +13,7 @@
             minWidth="100" minHeight="100"
             style="-fx-background-color: blue;">
 
-<Spinner fx:id="publication_dateTextField"/>
+<TextField fx:id="publication_dateTextField"/>
     <Button text="Confirm" onAction="#onConfirmButton"/>
 
 </FlowPane>
