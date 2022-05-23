@@ -1,6 +1,7 @@
 package controllers;
 
 import dao.DataAccess;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -15,11 +16,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddBookController implements Initializable {
-
-    //region Attributes
-
-    //endregion
-
 
     //region FXML controls
     @FXML
@@ -38,6 +34,13 @@ public class AddBookController implements Initializable {
     private TextField pagesTextField;
 
     // TODO Wykminic jakis sposob na wygodny wybor autora
+    @FXML
+    private ComboBox<AuthorModel> knownAuthorsComboBox;
+    //endregion
+
+
+    //region Attributes
+    private ObservableList<AuthorModel> knownAuthors = DataAccess.getAllAuthor();
     //endregion
 
 

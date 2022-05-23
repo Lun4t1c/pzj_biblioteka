@@ -13,7 +13,12 @@
             minWidth="100" minHeight="100"
             style="-fx-background-color: blue;">
 
-<TextField fx:id="publication_dateTextField"/>
+    <TextField fx:id="isbnTextField"/>
+    <TextField fx:id="titleTextField"/>
+    <TextField fx:id="publication_dateTextField"/>
+    <TextField fx:id="pagesTextField"/>
+    <ComboBox fx:id=""
+
     <Button text="Confirm" onAction="#onConfirmButton"/>
 
 </FlowPane>
