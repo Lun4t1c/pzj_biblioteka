@@ -17,7 +17,7 @@
     <TextField fx:id="titleTextField"/>
     <TextField fx:id="publication_dateTextField"/>
     <TextField fx:id="pagesTextField"/>
-    <ComboBox fx:id=""
+    <ComboBox fx:id="knownAuthorsComboBox"/>
 
     <Button text="Confirm" onAction="#onConfirmButton"/>
 
