@@ -4,26 +4,39 @@ import com.pzj.View;
 import com.pzj.ViewSwitcher;
 import dao.DataAccess;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
+import models.UserInfoModel;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ShellController {
+public class ShellController implements Initializable {
+
     //region Attributes
-
+    private UserInfoModel loggedUser;
     //endregion
+
 
     //region FXML Controls
     @FXML
     private BorderPane mainPane;
     //endregion
 
-    //region Constructor
+
+    //region Constructor + Initialize
     public ShellController(){
 
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
     //endregion
+
 
     //region Methods
     /**
@@ -58,6 +71,7 @@ public class ShellController {
         displayView(View.ADD_BOOK);
     }
     //endregion
+
 
     //region Button clicks
     @FXML

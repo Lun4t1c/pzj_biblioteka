@@ -1,37 +1,45 @@
 package controllers;
 
+import dao.DataAccess;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import models.AuthorModel;
+import models.BookModel;
+import org.w3c.dom.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddBookController implements Initializable {
+
     //region Attributes
 
     //endregion
 
+
     //region FXML controls
+    @FXML
+    private Label warningMessageLabel;
+
     @FXML
     private TextField isbnTextField;
 
     @FXML
     private TextField titleTextField;
 
-    // TODO Moze lepszy bylby zwykly TextField
     @FXML
-    private Spinner<Integer> publication_dateSpinner;
+    private TextField publication_dateTextField;
 
-    // TODO Moze lepszy bylby zwykly TextField
     @FXML
-    private Spinner<Integer> pagesSpinner;
+    private TextField pagesTextField;
 
     // TODO Wykminic jakis sposob na wygodny wybor autora
     //endregion
+
 
     //region Constructor + Initialize
     public AddBookController(){
@@ -44,16 +52,30 @@ public class AddBookController implements Initializable {
     }
     //endregion
 
+
     //region Methods
     private void confirm(){
         if (!isFormValid()) return;
-        System.out.println(publication_dateSpinner.getValue());
+
+        BookModel book = new BookModel(
+                -1,
+                isbnTextField.getText(),
+                titleTextField.getText(),
+                publication_dateTextField.getText(),
+                Integer.parseInt(pagesTextField.getText())
+        );
+
+        DataAccess.insertBook(book);
     }
 
-    // TODO Zaimplementowac
     private boolean isFormValid(){
+        boolean result = true;
+        warningMessageLabel.setText("");
 
-        return true;
+        if (!isPublicationDateValid())
+            warningMessageLabel.setText(warningMessageLabel.getText() + "Publication date invalid!\n");
+
+        return result;
     }
 
     private boolean isPublicationDateValid(){
@@ -61,14 +83,11 @@ public class AddBookController implements Initializable {
     }
     //endregion
 
+
     //region Button clicks
     @FXML
     protected void onConfirmButton(){
         confirm();
     }
-    //endregion
-
-    //region Utilities
-
     //endregion
 }
