@@ -10,12 +10,19 @@ import java.io.IOException;
 
 public class ViewSwitcher {
 
+    //region Loaded scenes
+    private static Parent MainLibraryParent = null;
+    private static Parent AddBookParent = null;
+    private static Parent BorrowBookParent = null;
+    //endregion
+
     private static Scene scene;
 
     public static void setScene(Scene scene){
         ViewSwitcher.scene = scene;
     }
 
+    @Deprecated
     public static void switchTo(View view){
         if (scene == null){
             System.out.println("No scene was set");
@@ -56,10 +63,39 @@ public class ViewSwitcher {
     }
 
     public static Parent getView(View view) throws IOException{
+        /*
         Parent out = FXMLLoader.load(
           ViewSwitcher.class.getResource(view.getFileName())
         );
+        */
 
-        return  out;
+
+        switch (view){
+            case MAIN_LIBRARY:
+                if (MainLibraryParent != null) return MainLibraryParent;
+
+                System.out.println("Creating new MAIN LBIARRY");
+                MainLibraryParent = FXMLLoader.load(ViewSwitcher.class.getResource(view.getFileName()));
+                return MainLibraryParent;
+
+
+            case ADD_BOOK:
+                if (AddBookParent != null) return AddBookParent;
+
+                System.out.println("Creating new ADD BOOK");
+                AddBookParent = FXMLLoader.load(ViewSwitcher.class.getResource(view.getFileName()));
+                return AddBookParent;
+
+
+
+            case BORROW_BOOK:
+                if (BorrowBookParent != null) return BorrowBookParent;
+
+                System.out.println("Creating new BORROW BOOK");
+                BorrowBookParent = FXMLLoader.load(ViewSwitcher.class.getResource(view.getFileName()));
+                return BorrowBookParent;
+        }
+
+        return null;
     }
 }
