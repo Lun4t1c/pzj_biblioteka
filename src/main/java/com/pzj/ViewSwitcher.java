@@ -62,6 +62,45 @@ public class ViewSwitcher {
         }
     }
 
+    public static void initialize() {
+        Thread mainThread = new Thread() {
+            @Override
+            public void run() {
+                System.out.println("crt main");
+                try {
+                    MainLibraryParent = FXMLLoader.load(ViewSwitcher.class.getResource(View.MAIN_LIBRARY.getFileName()));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                System.out.println("crt main finish");
+            }
+        };
+        Thread addThread = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    BorrowBookParent = FXMLLoader.load(ViewSwitcher.class.getResource(View.BORROW_BOOK.getFileName()));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        };
+
+            Thread borrowThread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        AddBookParent = FXMLLoader.load(ViewSwitcher.class.getResource(View.ADD_BOOK.getFileName()));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            };
+            mainThread.start();
+            borrowThread.start();
+            addThread.start();
+        }
+
     public static Parent getView(View view) throws IOException{
         /*
         Parent out = FXMLLoader.load(

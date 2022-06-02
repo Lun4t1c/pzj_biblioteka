@@ -5,6 +5,7 @@ package controllers;
 import com.pzj.SortMode;
 import dao.DataAccess;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,7 +30,7 @@ public class MainLibraryController implements Initializable {
 
     //region Attributes
     private SortMode sortMode = SortMode.TITLE_ASC;
-    private ObservableList<BookModel> books = DataAccess.getAllBooks();
+    private ObservableList<BookModel> books = DataAcce;
     private ObservableList<BookModel> filteredBooks = books;
     //endregion
 
