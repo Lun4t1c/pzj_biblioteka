@@ -697,4 +697,36 @@ public class DataAccess {
         }
     }
     //endregion
+
+    //region Dummy data
+    public static ObservableList<BookModel> getDummyBooks(){
+        ObservableList<BookModel> dummyBooks = FXCollections.observableArrayList();
+
+        dummyBooks.add(new BookModel(
+                -1,
+                "6969696",
+                "Benc benc",
+                "02/07/2015",
+                100
+        ));
+
+        dummyBooks.add(new BookModel(
+                -2,
+                "E23415",
+                "Kcecie sprubowaś nożu",
+                "08/10/2014",
+                47
+        ));
+
+        dummyBooks.add(new BookModel(
+                -3,
+                "T54234523",
+                "Dooobry jeees",
+                "27/04/2019",
+                256
+        ));
+
+        return dummyBooks;
+    }
+    //endregion
 }
