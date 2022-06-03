@@ -40,7 +40,7 @@ public class BorrowBookController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Load books from database
-        booksComboBox.setItems(books);
+        booksComboBox.setItems(DataAccess.getAllBooks());
 
         // Configure custom booksComboBox cell factory
         booksComboBox.setCellFactory(param -> new ListCell<BookModel>() {
