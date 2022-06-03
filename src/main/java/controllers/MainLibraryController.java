@@ -30,7 +30,7 @@ public class MainLibraryController implements Initializable {
 
     //region Attributes
     private SortMode sortMode = SortMode.TITLE_ASC;
-    private ObservableList<BookModel> books = DataAcce;
+    private ObservableList<BookModel> books = DataAccess.getAllBooks();
     private ObservableList<BookModel> filteredBooks = books;
     //endregion
 

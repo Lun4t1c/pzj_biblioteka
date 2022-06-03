@@ -60,6 +60,7 @@ public class AddBookController implements Initializable {
     private void confirm(){
         if (!isFormValid()) return;
 
+        /*
         BookModel book = new BookModel(
                 -1,
                 isbnTextField.getText(),
@@ -69,6 +70,8 @@ public class AddBookController implements Initializable {
         );
 
         DataAccess.insertBook(book);
+        */
+
     }
 
     private boolean isFormValid(){
