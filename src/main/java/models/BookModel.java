@@ -19,6 +19,9 @@ public class BookModel {
     public BookModel(int id,
                      String isbn,
                      String title,
+                     int publisher_id,
+                     int author_id,
+                     int category_id,
                      String publication_date,
                      int pages) {
         try {
