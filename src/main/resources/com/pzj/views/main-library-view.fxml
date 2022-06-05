@@ -1,24 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainLibraryController">
 
-<VBox alignment="CENTER"
-      spacing="20.0"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controllers.MainLibraryController">
+    <center>
+      <BorderPane prefWidth="800.0" style="-fx-background-color: DCDCDC;" BorderPane.alignment="CENTER">
+         <top>
+                <TextField fx:id="searchTextField" minWidth="200.0" prefHeight="40.0" prefWidth="200.0">
+               <BorderPane.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font name="Times New Roman" size="17.0" />
+               </font></TextField>
+         </top>
+         <center>
+                <ListView fx:id="booksListView" fixedCellSize="0.0" minWidth="200.0" prefHeight="800.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" />
+               </BorderPane.margin></ListView>
+         </center>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </BorderPane>
+    </center>
 
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
 
-    <TextField fx:id="searchTextField"/>
+    <left>
+        <AnchorPane maxWidth="520.0" minWidth="520.0" style="-fx-background-color: DCDCDC;">
+            <children>
+                <Text fx:id="chooselbl" layoutX="150.0" layoutY="112.0" text="Wybierz książkę!">
+                    <font>
+                        <Font name="Times New Roman Bold" size="30.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="titletf" editable="false" layoutX="40.0" layoutY="162.0" prefHeight="40.0" prefWidth="440.0" style="-fx-border-color: black;" text="wybierz z listy...">
+                    <font>
+                        <Font name="Times New Roman" size="17.0" />
+                    </font>
+                </TextField>
+                <ComboBox fx:id="copiesComboBox" layoutX="50.0" layoutY="215.0" minWidth="100" prefHeight="30.0" prefWidth="170.0" promptText="Select Copy" style="-fx-background-color: FFFFFF; -fx-border-color: black;" />
+                <ComboBox fx:id="readerComboBox1" layoutX="300.0" layoutY="215.0" prefHeight="30.0" prefWidth="170.0" promptText="Select Reader" style="-fx-background-color: FFFFFF; -fx-border-color: black;" />
+                <Label fx:id="authorlbl" layoutX="50.0" layoutY="280.0" text="Autor:">
+                    <font>
+                        <Font name="Times New Roman" size="23.0" />
+                    </font>
+                </Label>
+                <Label fx:id="authorValuelbl" layoutX="100.0" layoutY="320.0" text=".........................................................">
+                    <font>
+                        <Font name="Times New Roman" size="23.0" />
+                    </font>
+                </Label>
+                <Label fx:id="publisherlbl" layoutX="50.0" layoutY="360.0" text="Wydawca:">
+                    <font>
+                        <Font name="Times New Roman" size="23.0" />
+                    </font>
+                </Label>
+                <Label fx:id="publisherValuelbl" layoutX="100.0" layoutY="400.0" text=".........................................................">
+                    <font>
+                        <Font name="Times New Roman" size="23.0" />
+                    </font>
+                </Label>
+                <Label fx:id="categorylbl" layoutX="50.0" layoutY="440.0" text="Kategoria:">
+                    <font>
+                        <Font name="Times New Roman" size="23.0" />
+                    </font>
+                </Label>
+                <Label fx:id="categoryValuelbl" layoutX="100.0" layoutY="480.0" text=".........................................................">
+                    <font>
+                        <Font name="Times New Roman" size="23.0" />
+                    </font>
+                </Label>
+                <Label fx:id="publicationDatelbl" layoutX="50.0" layoutY="520.0" text="Data publikacji:">
+                    <font>
+                        <Font name="Times New Roman" size="23.0" />
+                    </font>
+                </Label>
+                <Label fx:id="publicationDateValuelbl" layoutX="100.0" layoutY="560.0" text=".........................................................">
+                    <font>
+                        <Font name="Times New Roman" size="23.0" />
+                    </font>
+                </Label>
+                <Label fx:id="pageslbl" layoutX="50.0" layoutY="600.0" text="Ilość stron:">
+                    <font>
+                        <Font name="Times New Roman" size="23.0" />
+                    </font>
+                </Label>
+                <Label fx:id="pagesValuelbl" layoutX="100.0" layoutY="640.0" text=".........................................................">
+                    <font>
+                        <Font name="Times New Roman" size="23.0" />
+                    </font>
+                </Label>
+                <Button fx:id="chooseButton" layoutX="150.0" layoutY="700.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: FFFFFF; -fx-border-color: black;" text="Wypozycz" />
+            </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
 
-    <ListView fx:id="booksListView"/>
-
-</VBox>
+        </AnchorPane>
+    </left>
+   <right>
+      <AnchorPane prefWidth="20.0" style="-fx-background-color: DCDCDC;" BorderPane.alignment="CENTER">
+          <children>
+              <Label prefWidth="5.0" text="    " />
+          </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

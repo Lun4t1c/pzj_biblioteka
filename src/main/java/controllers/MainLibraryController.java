@@ -4,10 +4,14 @@ package controllers;
 
 import com.pzj.SortMode;
 import dao.DataAccess;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -21,9 +25,20 @@ public class MainLibraryController implements Initializable {
     //region FXML Controls
     @FXML
     private TextField searchTextField;
-
     @FXML
     private ListView<BookModel> booksListView;
+    @FXML
+    private TextField titletf;
+    @FXML
+    private Label authorValuelbl;
+    @FXML
+    private Label publisherValuelbl;
+    @FXML
+    private Label categoryValuelbl;
+    @FXML
+    private Label publicationDateValuelbl;
+    @FXML
+    private Label pagesValuelbl;
     //endregion
 
 
@@ -31,6 +46,7 @@ public class MainLibraryController implements Initializable {
     private SortMode sortMode = SortMode.TITLE_ASC;
     private ObservableList<BookModel> books = DataAccess.getAllBooks();
     private ObservableList<BookModel> filteredBooks = books;
+    private BookModel selectedBook = null;
     //endregion
 
     //region Constructor + Initialize
@@ -41,9 +57,9 @@ public class MainLibraryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         searchTextField.textProperty().addListener((observable, oldValue, newValue) -> filterBooks());
-
         booksListView.setItems(filteredBooks);
 
+        // Set custom list item display
         booksListView.setCellFactory(param -> new ListCell<BookModel>() {
             @Override
             protected void updateItem(BookModel item, boolean empty) {
@@ -58,6 +74,14 @@ public class MainLibraryController implements Initializable {
 
                     setText(text);
                 }
+            }
+        });
+
+        // Add listener to book selection change
+        booksListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<BookModel>() {
+            @Override
+            public void changed(ObservableValue<? extends BookModel> observableValue, BookModel bookModel, BookModel t1) {
+                selectNewBook(t1);
             }
         });
 
@@ -89,6 +113,17 @@ public class MainLibraryController implements Initializable {
             case PUBLICATION_DATE_ASC   -> sortBooksByPublicationDateAsc();
             case PUBLICATION_DATE_DESC  -> sortBooksByPublicationDateDesc();
         }
+    }
+
+    private void selectNewBook(BookModel book){
+        selectedBook = book;
+
+        titletf.setText(book.getTitle());
+        authorValuelbl.setText( String.valueOf(book.getAuthor_id()) );
+        publisherValuelbl.setText( String.valueOf(book.getPublisher_id()) );
+        categoryValuelbl.setText( String.valueOf(book.getCategory_id()) );
+        publicationDateValuelbl.setText(book.getPublication_date().toString());
+        pagesValuelbl.setText( String.valueOf(book.getPages()) );
     }
 
     private void sortBooksByTitleAsc(){

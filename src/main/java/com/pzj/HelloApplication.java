@@ -17,6 +17,7 @@ public class HelloApplication extends Application {
         stage.setTitle("Library");
         stage.setScene(scene);
         stage.show();
+        ViewSwitcher.initialize();
 
 
         /*
