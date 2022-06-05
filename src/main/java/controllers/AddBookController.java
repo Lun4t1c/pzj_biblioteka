@@ -5,9 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import models.AuthorModel;
-import models.BookModel;
-import org.w3c.dom.CDATASection;
+import models.*;
 import org.w3c.dom.Text;
 
 import java.net.URL;
@@ -30,6 +28,18 @@ public class AddBookController implements Initializable {
 
     @FXML
     private TextField pagesTextField;
+
+    @FXML
+    private ComboBox<AuthorModel> knownAuthorsComboBox;
+
+    @FXML
+    private ComboBox<PublisherModel> knownPublisherComboBox;
+
+    @FXML
+    private ComboBox<LanguageModel> knownLanguageComboBox;
+
+    @FXML
+    private ComboBox<CategoryModel> knownCategoryCombobox;
 
     @FXML
     private Button confirmbtn;
