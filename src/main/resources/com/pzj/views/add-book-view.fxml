@@ -14,48 +14,80 @@
                     <Font name="Times New Roman Bold" size="30.0" />
                 </font>
             </Label>
-            <Label fx:id="titlelbl" layoutX="50.0" layoutY="100.0" text="Tytuł:">
-                <font>
-                    <Font name="Times New Roman" size="25.0" />
-                </font>
-            </Label>
-            <TextField fx:id="titleTextField" layoutX="100.0" layoutY="140.0" prefHeight="40.0" prefWidth="550.0" style="-fx-border-color: black;">
-               <font>
-                  <Font name="Times New Roman" size="25.0" />
-               </font></TextField>
-            <Label fx:id="publicationDatelbl" layoutX="50.0" layoutY="200.0" text="Data publikacji:">
-                <font>
-                    <Font name="Times New Roman" size="25.0" />
-                </font>
-            </Label>
-            <TextField fx:id="publication_dateTextField" layoutX="100.0" layoutY="240.0" prefHeight="40.0" prefWidth="550.0" style="-fx-border-color: black;">
-               <font>
-                  <Font name="Times New Roman" size="25.0" />
-               </font></TextField>
-            <Label fx:id="isbnlbl" layoutX="50.0" layoutY="300.0" text="isbn?:">
-                <font>
-                    <Font name="Times New Roman" size="25.0" />
-                </font>
-            </Label>
-            <TextField fx:id="isbnTextField" layoutX="100.0" layoutY="340.0" prefHeight="40.0" prefWidth="550.0" style="-fx-border-color: black;" />
-            <Label fx:id="pageslbl" layoutX="50.0" layoutY="400.0" text="Ilosc stron:">
-                <font>
-                    <Font name="Times New Roman" size="25.0" />
-                </font>
-            </Label>
-            <TextField fx:id="pagesTextField" layoutX="100.0" layoutY="440.0" prefHeight="40.0" prefWidth="550.0" style="-fx-border-color: black;">
-               <font>
-                  <Font name="Times New Roman" size="25.0" />
-               </font></TextField>
-            <Label fx:id="authorlbl" layoutX="50.0" layoutY="500.0" text="Autor:">
-                <font>
-                    <Font name="Times New Roman" size="25.0" />
-                </font>
-            </Label>
-            <ComboBox fx:id="knownAuthorsComboBox" layoutX="100" layoutY="540.0" prefHeight="48.0" prefWidth="550.0" style="-fx-background-color: white; -fx-border-color: black;" />
 
-            <Button fx:id="confirmbtn" layoutX="400.0" layoutY="700.0" onAction="#onConfirmButton" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: white; -fx-border-color: green;" text="Potwierdź" />
-            <Button fx:id="clearbtn" layoutX="50.0" layoutY="700.0" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: white; -fx-border-color: red;" text="Wyczyść" />
+            <Label fx:id="titlelbl" layoutX="50.0" layoutY="70.0" text="Tytuł:">
+                <font>
+                    <Font name="Times New Roman" size="20.0" />
+                </font>
+            </Label>
+            <TextField fx:id="titleTextField" layoutX="100.0" layoutY="100.0" prefHeight="30.0" prefWidth="550.0" style="-fx-border-color: black;">
+               <font>
+                  <Font name="Times New Roman" size="19.0" />
+               </font></TextField>
+
+            <Label fx:id="publicationDatelbl" layoutX="50.0" layoutY="150.0" text="Data publikacji:">
+                <font>
+                    <Font name="Times New Roman" size="20.0" />
+                </font>
+            </Label>
+            <TextField fx:id="publication_dateTextField" layoutX="100.0" layoutY="180.0" prefHeight="30.0" prefWidth="550.0" style="-fx-border-color: black;">
+               <font>
+                  <Font name="Times New Roman" size="19.0" />
+               </font></TextField>
+
+            <Label fx:id="isbnlbl" layoutX="50.0" layoutY="230.0" text="isbn?:">
+                <font>
+                    <Font name="Times New Roman" size="20.0" />
+                </font>
+            </Label>
+            <TextField fx:id="isbnTextField" layoutX="100.0" layoutY="260.0" prefHeight="20.0" prefWidth="550.0" style="-fx-border-color: black;">
+                <font>
+                    <Font name="Times New Roman" size="19.0" />
+                </font></TextField>
+
+            <Label fx:id="pageslbl" layoutX="50.0" layoutY="310.0" text="Ilosc stron:">
+                <font>
+                    <Font name="Times New Roman" size="20.0" />
+                </font>
+            </Label>
+            <TextField fx:id="pagesTextField" layoutX="100.0" layoutY="340.0" prefHeight="30.0" prefWidth="550.0" style="-fx-border-color: black;">
+               <font>
+                  <Font name="Times New Roman" size="19.0" />
+               </font></TextField>
+
+            <Label fx:id="authorlbl" layoutX="50.0" layoutY="390.0" text="Autor:">
+                <font>
+                    <Font name="Times New Roman" size="20.0" />
+                </font>
+            </Label>
+            <ComboBox fx:id="knownAuthorsComboBox" layoutX="100" layoutY="420.0" prefHeight="35.0" prefWidth="550.0" style="-fx-background-color: white; -fx-border-color: black;" />
+
+            <Label fx:id="publisherlbl" layoutX="50.0" layoutY="470.0" text="Wydawca:">
+                <font>
+                    <Font name="Times New Roman" size="20.0" />
+                </font>
+            </Label>
+            <ComboBox fx:id="knownPublisherComboBox" layoutX="100" layoutY="500.0" prefHeight="35.0" prefWidth="550.0" style="-fx-background-color: white; -fx-border-color: black;" />
+
+
+            <Label fx:id="languagelbl" layoutX="50.0" layoutY="550.0" text="Język:">
+                <font>
+                    <Font name="Times New Roman" size="20.0" />
+                </font>
+            </Label>
+            <ComboBox fx:id="knownLanguageComboBox" layoutX="100.0" layoutY="580.0" prefHeight="35.0" prefWidth="550.0" style="-fx-border-color: black; -fx-background-color: white;">
+                </ComboBox>
+
+            <Label fx:id="categorylbl" layoutX="50.0" layoutY="630.0" text="Kategorie:">
+                <font>
+                    <Font name="Times New Roman" size="20.0" />
+                </font>
+            </Label>
+            <ComboBox fx:id="knownCategoryComboBox" layoutX="100.0" layoutY="660.0" prefHeight="35.0" prefWidth="550.0" style="-fx-border-color: black; -fx-background-color: white;">
+                </ComboBox>
+
+            <Button fx:id="confirmbtn" layoutX="400.0" layoutY="720.0" onAction="#onConfirmButton" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: white; -fx-border-color: green;" text="Potwierdź" />
+            <Button fx:id="clearbtn" layoutX="50.0" layoutY="720.0" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: white; -fx-border-color: red;" text="Wyczyść" />
         </children>
          <BorderPane.margin>
             <Insets />

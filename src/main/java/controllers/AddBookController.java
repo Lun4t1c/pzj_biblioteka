@@ -5,8 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import models.AuthorModel;
-import models.BookModel;
+import models.*;
 import org.w3c.dom.Text;
 
 import java.net.URL;
@@ -31,7 +30,16 @@ public class AddBookController implements Initializable {
     private TextField pagesTextField;
 
     @FXML
-    private ComboBox knownAuthorsComboBox;
+    private ComboBox<AuthorModel> knownAuthorsComboBox;
+
+    @FXML
+    private ComboBox<PublisherModel> knownPublisherComboBox;
+
+    @FXML
+    private ComboBox<LanguageModel> knownLanguageComboBox;
+
+    @FXML
+    private ComboBox<CategoryModel> knownCategoryCombobox;
 
     @FXML
     private Button confirmbtn;
@@ -41,7 +49,7 @@ public class AddBookController implements Initializable {
 
     // TODO Wykminic jakis sposob na wygodny wybor autora
     @FXML
-    private ComboBox<AuthorModel> knownAuthorsComboBox;
+    //private ComboBox<AuthorModel> knownAuthorsComboBox;
     //endregion
 
 
