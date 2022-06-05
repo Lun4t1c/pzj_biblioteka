@@ -8,7 +8,7 @@
 <BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainLibraryController">
 
     <center>
-      <BorderPane prefWidth="400.0" style="-fx-background-color: DCDCDC;" BorderPane.alignment="CENTER">
+      <BorderPane prefWidth="800.0" style="-fx-background-color: DCDCDC;" BorderPane.alignment="CENTER">
          <top>
                 <TextField fx:id="searchTextField" minWidth="200.0" prefHeight="40.0" prefWidth="200.0">
                <BorderPane.margin>
@@ -19,24 +19,20 @@
                </font></TextField>
          </top>
          <center>
-                <ListView fx:id="booksListView" fixedCellSize="0.0" minWidth="200.0" prefHeight="800.0" prefWidth="200.0" BorderPane.alignment="CENTER_LEFT">
+                <ListView fx:id="booksListView" fixedCellSize="0.0" minWidth="200.0" prefHeight="800.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" />
                </BorderPane.margin></ListView>
          </center>
-          <right>
-              <AnchorPane prefWidth="5.0" style="-fx-background-color: DCDCDC;" BorderPane.alignment="CENTER">
-                  <children>
-                      <Label prefWidth="5.0" text="    " />
-                  </children>
-              </AnchorPane>
-          </right>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </BorderPane>
     </center>
 
 
     <left>
-        <AnchorPane minWidth="520.0" style="-fx-background-color: DCDCDC;">
+        <AnchorPane maxWidth="520.0" minWidth="520.0" style="-fx-background-color: DCDCDC;">
             <children>
                 <Text fx:id="chooselbl" layoutX="150.0" layoutY="112.0" text="Wybierz książkę!">
                     <font>
@@ -109,7 +105,7 @@
         </AnchorPane>
     </left>
    <right>
-      <AnchorPane prefWidth="5.0" style="-fx-background-color: DCDCDC;" BorderPane.alignment="CENTER">
+      <AnchorPane prefWidth="20.0" style="-fx-background-color: DCDCDC;" BorderPane.alignment="CENTER">
           <children>
               <Label prefWidth="5.0" text="    " />
           </children>
