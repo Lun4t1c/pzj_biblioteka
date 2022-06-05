@@ -9,9 +9,9 @@ import java.sql.*;
 public class DataAccess {
 
     //region Database Credentials
-    final static String url = "jdbc:postgresql://ec2-63-32-248-14.eu-west-1.compute.amazonaws.com:5432/dfk0ljleh92fmg";
-    final static String user = "ggrndogukgouym";
-    final static String password = "89e54c0e15055d0d65790d655f5962873ae627a73a93af232f83a03d9c19ee3b";
+    final static String url = "jdbc:postgresql://ec2-54-75-184-144.eu-west-1.compute.amazonaws.com:5432/d9gq3vr2vd5rpr";
+    final static String user = "atvjedtrzlznco";
+    final static String password = "39106a59a941117591115a4dc185994429dd86c51349d9f40b93992ece980e19";
     static Connection conn = null;
     //endregion
 
@@ -271,6 +271,9 @@ public class DataAccess {
                 books.add(new BookModel(sqlReturnValues.getInt("id"),
                                         sqlReturnValues.getString("isbn"),
                                         sqlReturnValues.getString("title"),
+                                        sqlReturnValues.getInt("publisher_id"),
+                                        sqlReturnValues.getInt("author_id"),
+                                        sqlReturnValues.getInt("category_id"),
                                         sqlReturnValues.getString("publication_date"),
                                         sqlReturnValues.getInt("pages")));
             }
@@ -699,34 +702,34 @@ public class DataAccess {
     //endregion
 
     //region Dummy data
-    public static ObservableList<BookModel> getDummyBooks(){
-        ObservableList<BookModel> dummyBooks = FXCollections.observableArrayList();
-
-        dummyBooks.add(new BookModel(
-                -1,
-                "6969696",
-                "Benc benc",
-                "02/07/2015",
-                100
-        ));
-
-        dummyBooks.add(new BookModel(
-                -2,
-                "E23415",
-                "Kcecie sprubowaś nożu",
-                "08/10/2014",
-                47
-        ));
-
-        dummyBooks.add(new BookModel(
-                -3,
-                "T54234523",
-                "Dooobry jeees",
-                "27/04/2019",
-                256
-        ));
-
-        return dummyBooks;
-    }
+//    public static ObservableList<BookModel> getDummyBooks(){
+//        ObservableList<BookModel> dummyBooks = FXCollections.observableArrayList();
+//
+//        dummyBooks.add(new BookModel(
+//                -1,
+//                "6969696",
+//                "Benc benc",
+//                "02/07/2015",
+//                100
+//        ));
+//
+//        dummyBooks.add(new BookModel(
+//                -2,
+//                "E23415",
+//                "Kcecie sprubowaś nożu",
+//                "08/10/2014",
+//                47
+//        ));
+//
+//        dummyBooks.add(new BookModel(
+//                -3,
+//                "T54234523",
+//                "Dooobry jeees",
+//                "27/04/2019",
+//                256
+//        ));
+//
+//        return dummyBooks;
+//    }
     //endregion
 }
