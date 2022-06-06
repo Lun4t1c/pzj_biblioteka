@@ -113,7 +113,6 @@ public class ViewSwitcher {
             case MAIN_LIBRARY:
                 if (MainLibraryParent != null) return MainLibraryParent;
 
-                System.out.println("Creating new MAIN LBIARRY");
                 MainLibraryParent = FXMLLoader.load(ViewSwitcher.class.getResource(view.getFileName()));
                 return MainLibraryParent;
 
@@ -121,16 +120,13 @@ public class ViewSwitcher {
             case ADD_BOOK:
                 if (AddBookParent != null) return AddBookParent;
 
-                System.out.println("Creating new ADD BOOK");
                 AddBookParent = FXMLLoader.load(ViewSwitcher.class.getResource(view.getFileName()));
                 return AddBookParent;
-
 
 
             case BORROW_BOOK:
                 if (BorrowBookParent != null) return BorrowBookParent;
 
-                System.out.println("Creating new BORROW BOOK");
                 BorrowBookParent = FXMLLoader.load(ViewSwitcher.class.getResource(view.getFileName()));
                 return BorrowBookParent;
         }

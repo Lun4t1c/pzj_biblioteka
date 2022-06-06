@@ -12,9 +12,9 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/shell-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
-        stage.setTitle("Library");
+        stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
         ViewSwitcher.initialize();

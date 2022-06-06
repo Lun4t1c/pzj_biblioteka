@@ -33,7 +33,7 @@ public class ShellController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //ViewSwitcher.initialize();
+
     }
     //endregion
 

@@ -37,7 +37,7 @@ public class DataAccess {
 
     //region Login
 
-    public static void login(String login, String passwd) {
+    public static UserInfoModel login(String login, String passwd) {
         try {
             conn = DriverManager.getConnection(url, user, password);
             String query = "SELECT ui.*, e.id emp_id, e.position, r.id read_id, r.card_nr FROM PUBLIC.\"User_Info\" ui \n" +
@@ -50,21 +50,24 @@ public class DataAccess {
                 // ok - check the role
                 if (sqlReturnValues.getString("emp_id") != null && sqlReturnValues.getString("read_id") == null) {
                     // Employee
-                    getMyEmployeeInfo(sqlReturnValues);
                     System.out.println("Hello employee.");
+                    return getMyEmployeeInfo(sqlReturnValues);
                 }
                 else if (sqlReturnValues.getString("emp_id") == null && sqlReturnValues.getString("read_id") != null) {
                     // Reader
-                    getMyReaderInfo(sqlReturnValues);
                     System.out.println("Hello reader.");
+                    return getMyReaderInfo(sqlReturnValues);
                 }
             } else {
                 // not ok
                 System.out.println("User does not exist");
+                return null;
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+        return null;
     }
 
     public static EmployeeModel getMyEmployeeInfo(ResultSet sqlReturnValues) {
