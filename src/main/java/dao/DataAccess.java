@@ -275,6 +275,7 @@ public class DataAccess {
                                         sqlReturnValues.getInt("author_id"),
                                         sqlReturnValues.getInt("category_id"),
                                         sqlReturnValues.getString("publication_date"),
+                                        sqlReturnValues.getInt("lang_id"),
                                         sqlReturnValues.getInt("pages")));
             }
             return  books;
@@ -288,7 +289,7 @@ public class DataAccess {
             Connection connection = DriverManager.getConnection(url, user, password);
             String query = "INSERT INTO PUBLIC.\"Book\" (isbn, title, publisher_id, author_id, category_id, publication_date, lang_id, pages) " +
                            "VALUES ('" + book.getIsbn() + "', '" + book.getTitle() + "', " + book.getPublisher_id() + ", " + book.getAuthor_id() + ", " + book.getCategory_id() +
-                           ", " + book.getPublication_date() + ", " + book.getLang_id() + ", " + book.getPages() + ")" ;
+                           ", '" + book.getPublication_date().toString() + "', " + book.getLang_id() + ", " + book.getPages() + ")" ;
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
             connection.close();
@@ -343,6 +344,7 @@ public class DataAccess {
                                             sqlReturnValues.getString("surname"),
                                             sqlReturnValues.getString("remarks")));
             }
+
             return authors;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -702,6 +704,22 @@ public class DataAccess {
     //endregion
 
     //region Dummy data
+    public static UserInfoModel getDummyAdmin(){
+        return new EmployeeModel(
+                -1,
+                -1,
+                "admin",
+                "admin",
+                "Mateusz",
+                "",
+                "Kupiec",
+                "696969696",
+                "tiger.bronzo@onet.pl",
+                "Mineralna 3 Uć",
+                "2011-12-12",
+                "A to to wgl nwm co to jest"
+        );
+    }
 //    public static ObservableList<BookModel> getDummyBooks(){
 //        ObservableList<BookModel> dummyBooks = FXCollections.observableArrayList();
 //

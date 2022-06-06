@@ -23,6 +23,7 @@ public class BookModel {
                      int author_id,
                      int category_id,
                      String publication_date,
+                     int lang_id,
                      int pages) {
         try {
             setId(id);
@@ -30,6 +31,10 @@ public class BookModel {
             setTitle(title);
             setPublication_date(LocalDate.parse(publication_date));
             setPages(pages);
+            setAuthor_id(author_id);
+            setPublisher_id(publisher_id);
+            setCategory_id(category_id);
+            setLang_id(lang_id);
         } catch (Exception ex) {
             System.out.println("BookModel Exception: " + ex.getMessage());
         }
@@ -40,7 +45,8 @@ public class BookModel {
     public int getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 

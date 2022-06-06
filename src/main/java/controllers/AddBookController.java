@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.util.StringConverter;
 import models.*;
 import org.w3c.dom.Text;
 
@@ -46,27 +47,30 @@ public class AddBookController implements Initializable {
 
     @FXML
     private Button clearbtn;
-
-    // TODO Wykminic jakis sposob na wygodny wybor autora
-    @FXML
-    private ComboBox<AuthorModel> knownAuthorsComboBox;
     //endregion
 
 
     //region Attributes
-    private ObservableList<AuthorModel> knownAuthors = DataAccess.getAllAuthor();
+
     //endregion
 
 
     //region Constructor + Initialize
     public AddBookController(){
-
+        ObservableList<EmployeeModel> benc = DataAccess.getAllEmployees();
+        for (EmployeeModel em : benc){
+            System.out.println("-: " + em.getLogin());
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         knownAuthorsComboBox.setItems(DataAccess.getAllAuthor());
+        knownCategoryCombobox.setItems(DataAccess.getAllCategories());
+        knownLanguageComboBox.setItems(DataAccess.getAllLanguage());
+        knownPublisherComboBox.setItems(DataAccess.getAllPublishers());
 
+        /*
         knownAuthorsComboBox.setCellFactory(param -> new ListCell<AuthorModel>() {
             @Override
             protected void updateItem(AuthorModel item, boolean empty) {
@@ -79,6 +83,59 @@ public class AddBookController implements Initializable {
                 }
             }
         });
+        */
+
+        knownAuthorsComboBox.setConverter(new StringConverter<AuthorModel>() {
+            @Override
+            public String toString(AuthorModel authorModel) {
+                if (authorModel == null) return "";
+                return authorModel.getFullName();
+            }
+
+            @Override
+            public AuthorModel fromString(String s) {
+                return null;
+            }
+        });
+
+        knownPublisherComboBox.setConverter(new StringConverter<PublisherModel>() {
+            @Override
+            public String toString(PublisherModel publisherModel) {
+                if (publisherModel == null) return "";
+                return publisherModel.getName();
+            }
+
+            @Override
+            public PublisherModel fromString(String s) {
+                return null;
+            }
+        });
+
+        knownCategoryCombobox.setConverter(new StringConverter<CategoryModel>() {
+            @Override
+            public String toString(CategoryModel categoryModel) {
+                if (categoryModel == null) return "";
+                return categoryModel.getName();
+            }
+
+            @Override
+            public CategoryModel fromString(String s) {
+                return null;
+            }
+        });
+
+        knownLanguageComboBox.setConverter(new StringConverter<LanguageModel>() {
+            @Override
+            public String toString(LanguageModel languageModel) {
+                if (languageModel == null) return "";
+                return languageModel.getName();
+            }
+
+            @Override
+            public LanguageModel fromString(String s) {
+                return null;
+            }
+        });
     }
     //endregion
 
@@ -87,21 +144,19 @@ public class AddBookController implements Initializable {
     private void confirm(){
         if (!isFormValid()) return;
 
-
-        /*
         BookModel book = new BookModel(
                 -1,
                 isbnTextField.getText(),
                 titleTextField.getText(),
+                knownPublisherComboBox.getValue().getId(),
+                knownAuthorsComboBox.getValue().getId(),
+                knownCategoryCombobox.getValue().getId(),
                 publication_dateTextField.getText(),
-                Integer.parseInt(pagesTextField.getText()),
-                knownAuthorsComboBox.getValue().getId()
+                knownLanguageComboBox.getValue().getId(),
+                Integer.parseInt(pagesTextField.getText())
         );
 
-
         DataAccess.insertBook(book);
-        */
-
         resetForm();
     }
 
@@ -110,6 +165,10 @@ public class AddBookController implements Initializable {
         titleTextField.setText("");
         publication_dateTextField.setText("");
         pagesTextField.setText("");
+        knownLanguageComboBox.setValue(null);
+        knownCategoryCombobox.setValue(null);
+        knownPublisherComboBox.setValue(null);
+        knownAuthorsComboBox.setValue(null);
     }
 
     private boolean isFormValid(){
