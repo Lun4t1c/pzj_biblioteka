@@ -27,9 +27,9 @@ public class BorrowBookController implements Initializable {
     @FXML
     private ComboBox<CopyModel> copiesComboBox;
     @FXML
-    public ComboBox<ReaderModel> readerComboBox;
+    private ComboBox<ReaderModel> readerComboBox;
     @FXML
-    public ComboBox<EmployeeModel> employeesComboBox;
+    private ComboBox<EmployeeModel> employeesComboBox;
     //endregion
 
     //region Constructor + Initalize
