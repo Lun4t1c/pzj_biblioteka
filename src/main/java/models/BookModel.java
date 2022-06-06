@@ -29,6 +29,9 @@ public class BookModel {
             setId(id);
             setIsbn(isbn);
             setTitle(title);
+            this.publisher_id = publisher_id;
+            this.author_id = author_id;
+            this.category_id = category_id;
             setPublication_date(LocalDate.parse(publication_date));
             setPages(pages);
             setAuthor_id(author_id);
