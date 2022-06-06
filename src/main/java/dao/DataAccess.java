@@ -35,6 +35,82 @@ public class DataAccess {
     }
     //endregion
 
+    //region Login
+
+    public static void login(String login, String passwd) {
+        try {
+            conn = DriverManager.getConnection(url, user, password);
+            String query = "SELECT ui.*, e.id emp_id, e.position, r.id read_id, r.card_nr FROM PUBLIC.\"User_Info\" ui \n" +
+                            "LEFT JOIN PUBLIC.\"Employee\" e ON ui.id = e.user_info_id \n" +
+                            "LEFT JOIN PUBLIC.\"Reader\" r ON ui.id = r.user_info_id \n" +
+                            "WHERE ui.login = '" + login + "' AND PASSWORD = '" + passwd + "'";
+            PreparedStatement statement = conn.prepareStatement(query);
+            ResultSet sqlReturnValues = statement.executeQuery();
+            if (sqlReturnValues.next()) {
+                // ok - check the role
+                if (sqlReturnValues.getString("emp_id") != null && sqlReturnValues.getString("read_id") == null) {
+                    // Employee
+                    getMyEmployeeInfo(sqlReturnValues);
+                    System.out.println("Hello employee.");
+                }
+                else if (sqlReturnValues.getString("emp_id") == null && sqlReturnValues.getString("read_id") != null) {
+                    // Reader
+                    getMyReaderInfo(sqlReturnValues);
+                    System.out.println("Hello reader.");
+                }
+            } else {
+                // not ok
+                System.out.println("User does not exist");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static EmployeeModel getMyEmployeeInfo(ResultSet sqlReturnValues) {
+        EmployeeModel myUser = null;
+        try {
+            myUser = new EmployeeModel(sqlReturnValues.getInt("emp_id"),
+                    sqlReturnValues.getInt("id"),
+                    sqlReturnValues.getString("position"),
+                    sqlReturnValues.getString("login"),
+                    sqlReturnValues.getString("password"),
+                    sqlReturnValues.getString("first_name"),
+                    sqlReturnValues.getString("second_name"),
+                    sqlReturnValues.getString("surname"),
+                    sqlReturnValues.getString("phone"),
+                    sqlReturnValues.getString("email"),
+                    sqlReturnValues.getString("address"),
+                    sqlReturnValues.getString("registration_date"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return myUser;
+    }
+
+    public static ReaderModel getMyReaderInfo(ResultSet sqlReturnValues) {
+        ReaderModel myUser = null;
+        try {
+            myUser = new ReaderModel(sqlReturnValues.getInt("read_id"),
+                    sqlReturnValues.getInt("id"),
+                    sqlReturnValues.getString("card_nr"),
+                    sqlReturnValues.getString("login"),
+                    sqlReturnValues.getString("password"),
+                    sqlReturnValues.getString("first_name"),
+                    sqlReturnValues.getString("second_name"),
+                    sqlReturnValues.getString("surname"),
+                    sqlReturnValues.getString("phone"),
+                    sqlReturnValues.getString("email"),
+                    sqlReturnValues.getString("address"),
+                    sqlReturnValues.getString("registration_date"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return myUser;
+    }
+
+    //endregion
+
     //region Book Categories
     public static ObservableList<CategoryModel> getAllCategories() {
         try {
@@ -543,6 +619,7 @@ public class DataAccess {
             while (sqlReturnValues.next()) {
                 employees.add(new EmployeeModel(sqlReturnValues.getInt("id"),
                                                 sqlReturnValues.getInt("user_info_id"),
+                                                sqlReturnValues.getString("position"),
                                                 sqlReturnValues.getString("login"),
                                                 sqlReturnValues.getString("password"),
                                                 sqlReturnValues.getString("first_name"),
@@ -551,8 +628,7 @@ public class DataAccess {
                                                 sqlReturnValues.getString("phone"),
                                                 sqlReturnValues.getString("email"),
                                                 sqlReturnValues.getString("address"),
-                                                sqlReturnValues.getString("registration_date"),
-                                                sqlReturnValues.getString("position")));
+                                                sqlReturnValues.getString("registration_date")));
             }
             return employees;
         } catch (SQLException ex) {

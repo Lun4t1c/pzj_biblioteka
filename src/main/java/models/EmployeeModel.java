@@ -8,6 +8,7 @@ public class EmployeeModel extends UserInfoModel {
 
     public EmployeeModel(int id,
                          int user_info_id,
+                         String position,
                          String login,
                          String password,
                          String first_name,
@@ -16,8 +17,7 @@ public class EmployeeModel extends UserInfoModel {
                          String phone,
                          String email,
                          String address,
-                         String registration_date,
-                         String position) {
+                         String registration_date) {
         super(user_info_id, login, password, first_name, second_name, surname, phone, email, address, registration_date);
         setId(id);
         setPosition(position);
