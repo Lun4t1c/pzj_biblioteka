@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+    <center>
+        <AnchorPane prefHeight="800.0" minWidth="400.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="570.0" layoutY="110.0" text="Biblioteka.io">
+                    <font>
+                        <Font size="80.0" />
+                    </font>
+                </Label>
+                <Label layoutX="600.0" layoutY="250.0" text="Login:">
+                    <font>
+                        <Font size="25.0" />
+                    </font>
+                </Label>
+                <Label layoutX="600.0" layoutY="350.0" text="Hasło:">
+                    <font>
+                        <Font size="25.0" />
+                    </font>
+                </Label>
+                <PasswordField fx:id="paswordPasswordField" layoutX="690.0" layoutY="350.0" fx:controller="controllers.LoginController">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </PasswordField>
+                <TextField fx:id="loginTextField" layoutX="690.0" layoutY="250.0" fx:controller="controllers.LoginController">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </TextField>
+                <Button fx:id="registerbtn" layoutX="620.0" layoutY="450.0" prefWidth="150.0" prefHeight="40.0" mnemonicParsing="false" text="Rejestracja" fx:controller="controllers.LoginController" />
+                <Button fx:id="loginbtn" layoutX="820.0" layoutY="450.0" prefWidth="150.0" prefHeight="40.0" mnemonicParsing="false" text="Zaloguj" fx:controller="controllers.LoginController" />
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
