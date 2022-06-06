@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane minWidth="600.0" prefHeight="800.0" style="-fx-background-color: DCDCDC;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegisterController">
+    <center>
+        <AnchorPane maxWidth="300.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: EFEDF1;" AnchorPane.leftAnchor="0.0">
+            <children>
+                <Label layoutX="210.0" layoutY="10.0" text="Rejestracja">
+                    <font>
+                        <Font size="80.0" />
+                    </font>
+                </Label>
+                <RadioButton fx:id="employerRadioButton" layoutX="80.0" layoutY="200.0" mnemonicParsing="false" text="Rejestracja pracownika" />
+                <Label layoutX="80.0" layoutY="240.0" text="Login:">
+                    <font>
+                        <Font size="25.0" />
+                    </font>
+                </Label>
+                <Label layoutX="80.0" layoutY="340.0" text="Imię:">
+                    <font>
+                        <Font size="25.0" />
+                    </font>
+                </Label>
+                <Label layoutX="480.0" layoutY="240.0" text="Hasło:">
+                    <font>
+                        <Font size="25.0" />
+                    </font>
+                </Label>
+                <Label layoutX="480.0" layoutY="340.0" text="Nazwisko:">
+                    <font>
+                        <Font size="25.0" />
+                    </font>
+                </Label>
+                <Label layoutX="80.0" layoutY="440.0" text="E-mail:">
+                    <font>
+                        <Font size="25.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="loginTextField" layoutX="80.0" layoutY="280.0" style="-fx-border-color: black;">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="emailTextField" layoutX="80.0" layoutY="480.0" prefWidth="350.0" style="-fx-border-color: black;">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="nameTextField" layoutX="80.0" layoutY="380.0" style="-fx-border-color: black;">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="surnameTextField" layoutX="480.0" layoutY="380.0" style="-fx-border-color: black;">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </TextField>
+                <PasswordField fx:id="passwordPasswordField" layoutX="480.0" layoutY="280.0" style="-fx-border-color: black;">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </PasswordField>
+                <Button fx:id="backButton" layoutX="190.0" layoutY="586.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: red;" text="Cofnij">
+                    <font>
+                        <Font name="Times New Roman" size="18.0" />
+                    </font></Button>
+                <Button fx:id="registerButton" layoutX="490.0" layoutY="586.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: green;" text="Zarejestruj">
+                    <font>
+                        <Font name="Times New Roman" size="18.0" />
+                    </font></Button>
+
+            </children>
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+            <padding>
+                <Insets right="80.0" />
+            </padding>
+        </AnchorPane>
+    </center>
+    <left>
+        <AnchorPane style="-fx-background-color: DCDCDC;" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin></AnchorPane>
+    </left>
+    <right>
+        <AnchorPane maxWidth="300.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: DCDCDC;" BorderPane.alignment="CENTER" />
+    </right>
+</BorderPane>
