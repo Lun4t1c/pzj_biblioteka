@@ -370,6 +370,109 @@ public class DataAccess {
     }
     //endregion
 
+    //region Search
+
+
+    public static BookModel searchBookId (int book_id) {
+        BookModel book = null;
+        try {
+            conn = DriverManager.getConnection(url, user, password);
+            String query = "SELECT * FROM PUBLIC.\"Book\" WHERE id = " + book_id;
+            PreparedStatement statement = conn.prepareStatement(query);
+            ResultSet sqlReturnValues = statement.executeQuery();
+
+            while (sqlReturnValues.next()) {
+                book =  new BookModel(sqlReturnValues.getInt("id"),
+                        sqlReturnValues.getString("isbn"),
+                        sqlReturnValues.getString("title"),
+                        sqlReturnValues.getInt("publisher_id"),
+                        sqlReturnValues.getInt("author_id"),
+                        sqlReturnValues.getInt("category_id"),
+                        sqlReturnValues.getString("publication_date"),
+                        sqlReturnValues.getInt("lang_id"),
+                        sqlReturnValues.getInt("pages"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return book;
+    }
+
+    public static AuthorModel searchAuthorId (int author_id) {
+        AuthorModel author = null;
+        try {
+            conn = DriverManager.getConnection(url, user, password);
+            String query = "SELECT * FROM PUBLIC.\"Author\" WHERE id = " + author_id;
+            PreparedStatement statement = conn.prepareStatement(query);
+            ResultSet sqlReturnValues = statement.executeQuery();
+            while (sqlReturnValues.next()) {
+                author = new AuthorModel(sqlReturnValues.getInt("id"),
+                        sqlReturnValues.getString("name"),
+                        sqlReturnValues.getString("surname"),
+                        sqlReturnValues.getString("remarks"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return author;
+    }
+
+    public static PublisherModel searchPublisherId (int publisher_id) {
+        PublisherModel publisher = null;
+        try {
+            conn = DriverManager.getConnection(url, user, password);
+            String query = "SELECT * FROM PUBLIC.\"Publisher\" WHERE id = " + publisher_id;
+            PreparedStatement statement = conn.prepareStatement(query);
+            ResultSet sqlReturnValues = statement.executeQuery();
+            while (sqlReturnValues.next()) {
+                publisher = new PublisherModel(sqlReturnValues.getInt("id"),
+                        sqlReturnValues.getString("name"),
+                        sqlReturnValues.getString("address"),
+                        sqlReturnValues.getString("remarks"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return publisher;
+    }
+
+    public static CategoryModel searchCategoryId (int category_id) {
+        CategoryModel category = null;
+        try {
+            conn = DriverManager.getConnection(url, user, password);
+            String query = "SELECT * FROM PUBLIC.\"Category\" WHERE id = " + category_id;
+            PreparedStatement statement = conn.prepareStatement(query);
+            ResultSet sqlReturnValues = statement.executeQuery();
+            while (sqlReturnValues.next()) {
+                category = new CategoryModel(sqlReturnValues.getInt("id"),
+                        sqlReturnValues.getString("name"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return category;
+    }
+
+    public static LanguageModel searchLanguageId (int language_id) {
+        LanguageModel language = null;
+        try {
+            conn = DriverManager.getConnection(url, user, password);
+            String query = "SELECT * FROM PUBLIC.\"Language\" WHERE id = " + language_id;
+            PreparedStatement statement = conn.prepareStatement(query);
+            ResultSet sqlReturnValues = statement.executeQuery();
+            while (sqlReturnValues.next()) {
+                language = new LanguageModel(sqlReturnValues.getInt("id"),
+                        sqlReturnValues.getString("name"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return language;
+    }
+
+    //endregion
+
+
     //region Books
     public static ObservableList<BookModel> getAllBooks() {
         try {
@@ -397,32 +500,6 @@ public class DataAccess {
         return null;
     }
 
-    public static BookModel searchBookId (int book_id) {
-        BookModel book = null;
-        try {
-            conn = DriverManager.getConnection(url, user, password);
-            String query = "SELECT * FROM PUBLIC.\"Book\" WHERE id = " + book_id;
-            PreparedStatement statement = conn.prepareStatement(query);
-            ResultSet sqlReturnValues = statement.executeQuery();
-            ObservableList<BookModel> books = FXCollections.observableArrayList();
-
-            while (sqlReturnValues.next()) {
-                book =  new BookModel(sqlReturnValues.getInt("id"),
-                        sqlReturnValues.getString("isbn"),
-                        sqlReturnValues.getString("title"),
-                        sqlReturnValues.getInt("publisher_id"),
-                        sqlReturnValues.getInt("author_id"),
-                        sqlReturnValues.getInt("category_id"),
-                        sqlReturnValues.getString("publication_date"),
-                        sqlReturnValues.getInt("lang_id"),
-                        sqlReturnValues.getInt("pages"));
-            }
-            // return book;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return book;
-    }
 
     public static void insertBook(BookModel book) {
         try {
@@ -535,14 +612,14 @@ public class DataAccess {
             String query = "SELECT * FROM PUBLIC.\"Publisher\"";
             PreparedStatement statement = conn.prepareStatement(query);
             ResultSet sqlReturnValues = statement.executeQuery();
-            ObservableList<PublisherModel> languages = FXCollections.observableArrayList();
+            ObservableList<PublisherModel> publishers = FXCollections.observableArrayList();
             while (sqlReturnValues.next()) {
-                languages.add(new PublisherModel(sqlReturnValues.getInt("id"),
+                publishers.add(new PublisherModel(sqlReturnValues.getInt("id"),
                                                  sqlReturnValues.getString("name"),
                                                  sqlReturnValues.getString("address"),
                                                  sqlReturnValues.getString("remarks")));
             }
-            return languages;
+            return publishers;
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
