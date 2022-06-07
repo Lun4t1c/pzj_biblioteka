@@ -6,7 +6,8 @@ import dao.DataAccess;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import models.UserInfoModel;
 
 import java.io.IOException;
