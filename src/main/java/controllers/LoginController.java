@@ -91,7 +91,7 @@ public class LoginController implements Initializable{
         Stage stage = (Stage) loginbtn.getScene().getWindow();
         stage.close();
 
-        ViewSwitcher.openWindow(View.SHELL);
+        ViewSwitcher.openWindow(View.SHELL_EMPLOYEE);
     }
     //endregion
 

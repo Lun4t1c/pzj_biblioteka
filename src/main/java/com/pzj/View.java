@@ -7,7 +7,8 @@ public enum View {
     ADD_BOOK("views/add-book-view.fxml"),
     SHELL("views/shell-view.fxml"),
     LOGIN("views/login-view.fxml"),
-    REGISTER("views/register-view.fxml")
+    REGISTER("views/register-view.fxml"),
+    SHELL_EMPLOYEE("views/order-library-view.fxml"),
     ;
 
     private String fileName;

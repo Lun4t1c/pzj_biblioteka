@@ -104,8 +104,8 @@
                     <Font name="Times New Roman" size="23.0" />
                 </font>
             </Label>
-            <Button fx:id="cancelButton" layoutX="50.0" layoutY="700.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: FFFFFF; -fx-border-color: red;" text="Anuluj" />
-            <Button fx:id="confirmButton" layoutX="280.0" layoutY="700.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: FFFFFF; -fx-border-color: green;" text="Potwierdź" />
+            <Button fx:id="cancelButton" onAction="#onCancelButton" layoutX="50.0" layoutY="700.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: FFFFFF; -fx-border-color: red;" text="Anuluj" />
+            <Button fx:id="confirmButton" onAction="#onConfirmButton" layoutX="280.0" layoutY="700.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: FFFFFF; -fx-border-color: green;" text="Potwierdź" />
         </children>
         <opaqueInsets>
             <Insets />
