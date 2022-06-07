@@ -2,11 +2,11 @@ package models;
 
 public class EmployeeModel extends UserInfoModel {
     //region Attributes
-    private int id;
+    private int emp_id;
     private String position;
     //endregion
 
-    public EmployeeModel(int id,
+    public EmployeeModel(int emp_id,
                          int user_info_id,
                          String position,
                          String login,
@@ -19,7 +19,7 @@ public class EmployeeModel extends UserInfoModel {
                          String address,
                          String registration_date) {
         super(user_info_id, login, password, first_name, second_name, surname, phone, email, address, registration_date);
-        setId(id);
+        setEmp_id(emp_id);
         setPosition(position);
     }
 
@@ -30,11 +30,11 @@ public class EmployeeModel extends UserInfoModel {
     public void setPosition(String position) {
         this.position = position;
     }
-    public int getId() {
-        return id;
+    public int getEmp_id() {
+        return emp_id;
     }
-    public void setId(int id) {
-        this.id = id;
+    public void setEmp_id(int emp_id) {
+        this.emp_id = emp_id;
     }
     //endregion
 }

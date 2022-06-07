@@ -3,6 +3,7 @@ package dao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.*;
+import models.Security.Encryption;
 
 import java.sql.*;
 
@@ -38,43 +39,75 @@ public class DataAccess {
     //region Login
 
     public static UserInfoModel login(String login, String passwd) {
+        UserInfoModel myUser = null;
         try {
             conn = DriverManager.getConnection(url, user, password);
-            String query = "SELECT ui.*, e.id emp_id, e.position, r.id read_id, r.card_nr FROM PUBLIC.\"User_Info\" ui \n" +
+            String hashPass = Encryption.getSecurePassword_SHA256(passwd);
+            String query = "SELECT ui.*, ui.id user_info_id, e.id emp_id, e.position, r.id read_id, r.card_nr FROM PUBLIC.\"User_Info\" ui \n" +
                             "LEFT JOIN PUBLIC.\"Employee\" e ON ui.id = e.user_info_id \n" +
                             "LEFT JOIN PUBLIC.\"Reader\" r ON ui.id = r.user_info_id \n" +
-                            "WHERE ui.login = '" + login + "' AND PASSWORD = '" + passwd + "'";
+                            "WHERE ui.login = '" + login + "' AND PASSWORD = '" + hashPass + "'";
             PreparedStatement statement = conn.prepareStatement(query);
             ResultSet sqlReturnValues = statement.executeQuery();
             if (sqlReturnValues.next()) {
                 // ok - check the role
                 if (sqlReturnValues.getString("emp_id") != null && sqlReturnValues.getString("read_id") == null) {
                     // Employee
+                    myUser = getMyEmployeeInfo(sqlReturnValues);
                     System.out.println("Hello employee.");
-                    return getMyEmployeeInfo(sqlReturnValues);
                 }
                 else if (sqlReturnValues.getString("emp_id") == null && sqlReturnValues.getString("read_id") != null) {
                     // Reader
+                    myUser = getMyReaderInfo(sqlReturnValues);
                     System.out.println("Hello reader.");
-                    return getMyReaderInfo(sqlReturnValues);
                 }
             } else {
                 // not ok
                 System.out.println("User does not exist");
-                return null;
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        return myUser;
+    }
 
-        return null;
+    public static void updateReaderPassword(ReaderModel reader, String passwd) {
+        reader.setPassword(Encryption.getSecurePassword_SHA256(passwd));
+        try {
+            Connection connection = DriverManager.getConnection(url, user, password);
+            String query = "UPDATE PUBLIC.\"User_Info\" " +
+                    "SET PASSWORD = '" + reader.getPassword() + "' " +
+                    "WHERE id = " + reader.getUser_info_id();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+            connection.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        System.out.println("Password for reader updated.");
+    }
+
+    public static void updateEmployeePassword(EmployeeModel employee, String passwd) {
+        employee.setPassword(Encryption.getSecurePassword_SHA256(passwd));
+        try {
+            Connection connection = DriverManager.getConnection(url, user, password);
+            String query = "UPDATE PUBLIC.\"User_Info\" " +
+                    "SET PASSWORD = '" + employee.getPassword() + "' " +
+                    "WHERE id = " + employee.getUser_info_id();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+            connection.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        System.out.println("Password for employee updated.");
     }
 
     public static EmployeeModel getMyEmployeeInfo(ResultSet sqlReturnValues) {
         EmployeeModel myUser = null;
         try {
             myUser = new EmployeeModel(sqlReturnValues.getInt("emp_id"),
-                    sqlReturnValues.getInt("id"),
+                    sqlReturnValues.getInt("user_info_id"),
                     sqlReturnValues.getString("position"),
                     sqlReturnValues.getString("login"),
                     sqlReturnValues.getString("password"),
@@ -95,7 +128,7 @@ public class DataAccess {
         ReaderModel myUser = null;
         try {
             myUser = new ReaderModel(sqlReturnValues.getInt("read_id"),
-                    sqlReturnValues.getInt("id"),
+                    sqlReturnValues.getInt("user_info_id"),
                     sqlReturnValues.getString("card_nr"),
                     sqlReturnValues.getString("login"),
                     sqlReturnValues.getString("password"),
@@ -423,7 +456,6 @@ public class DataAccess {
                                             sqlReturnValues.getString("surname"),
                                             sqlReturnValues.getString("remarks")));
             }
-
             return authors;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -561,6 +593,17 @@ public class DataAccess {
     public static void insertReader(ReaderModel reader){
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
+            reader.setPassword(Encryption.getSecurePassword_SHA256(reader.getPassword()));
+            /*String query = "CALL insert_reader(" + reader.getLogin() + ", " +
+                            reader.getPassword() + ", " +
+                            reader.getFirst_name() + ", " +
+                            reader.getSecond_name() + ", " +
+                            reader.getSurname() + ", " +
+                            reader.getPhone() + ", " +
+                            reader.getEmail() + ", " +
+                            reader.getAddress() + ", " +
+                            reader.getRegistration_date() + ", " +
+                            reader.getCardNr() + ")";*/
             String query = "CALL insert_reader('" + reader.getLogin() + "', '" +
                             reader.getPassword() + "', '" +
                             reader.getFirst_name() + "', '" +
@@ -592,6 +635,17 @@ public class DataAccess {
     public static void updateReader(ReaderModel reader) { // (int id, String login, String password, String first_name, String second_name, String surname, String phone, String email, String address, String card_nr) {
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
+            reader.setPassword(Encryption.getSecurePassword_SHA256(reader.getPassword()));
+            /*String query = "CALL update_reader(" + reader.getRead_id() + ", '" +
+                            reader.getLogin() + "', '" +
+                            reader.getPassword() + "', '" +
+                            reader.getFirst_name() + "', '" +
+                            reader.getSecond_name() + "', '" +
+                            reader.getSurname() + "', '" +
+                            reader.getPhone() + "', '" +
+                            reader.getEmail() + "', '" +
+                            reader.getAddress() + "', '" +
+                            reader.getCardNr() + "')";*/
             String query = "CALL update_reader('" + reader.getId() + "', '" +
                             reader.getLogin() + "', '" +
                             reader.getPassword() + "', '" +
@@ -644,6 +698,17 @@ public class DataAccess {
     public static void insertEmployee(EmployeeModel employee){
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
+            employee.setPassword(Encryption.getSecurePassword_SHA256(employee.getPassword()));
+            /*String query = "CALL insert_employee( " + employee.getLogin() + ", " +
+                            employee.getPassword() + ", " +
+                            employee.getFirst_name() + ", " +
+                            employee.getSecond_name() + ", " +
+                            employee.getSurname() + ", " +
+                            employee.getPhone() + ", " +
+                            employee.getEmail() + ", " +
+                            employee.getAddress() + ", " +
+                            employee.getRegistration_date() + ", " +
+                            employee.getPosition() + ")";*/
             String query = "CALL insert_employee( '" + employee.getLogin() + "', '" +
                             employee.getPassword() + "', '" +
                             employee.getFirst_name() + "', '" +
@@ -675,16 +740,17 @@ public class DataAccess {
     public static void updateEmployee(EmployeeModel employee) { // (int id, String login, String password, String first_name, String second_name, String surname, String phone, String email, String address, String position) {
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
-            String query = "CALL update_employee(" + employee.getId() + ", " +
-                            employee.getLogin() + ", " +
-                            employee.getPassword() + ", " +
-                            employee.getFirst_name() + ", " +
-                            employee.getSecond_name() + ", " +
-                            employee.getSurname() + ", " +
-                            employee.getPhone() + ", " +
-                            employee.getEmail() + ", " +
-                            employee.getAddress() + ", " +
-                            employee.getPosition() + ")";
+            employee.setPassword(Encryption.getSecurePassword_SHA256(employee.getPassword()));
+            String query = "CALL update_employee(" + employee.getEmp_id() + ", '" +
+                            employee.getLogin() + "', '" +
+                            employee.getPassword() + "', '" +
+                            employee.getFirst_name() + "', '" +
+                            employee.getSecond_name() + "', '" +
+                            employee.getSurname() + "', '" +
+                            employee.getPhone() + "', '" +
+                            employee.getEmail() + "', '" +
+                            employee.getAddress() + "', '" +
+                            employee.getPosition() + "')";
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
             connection.close();
@@ -783,22 +849,6 @@ public class DataAccess {
     //endregion
 
     //region Dummy data
-    public static UserInfoModel getDummyAdmin(){
-        return new EmployeeModel(
-                -1,
-                -1,
-                "admin",
-                "admin",
-                "Mateusz",
-                "",
-                "Kupiec",
-                "696969696",
-                "tiger.bronzo@onet.pl",
-                "Mineralna 3 Uć",
-                "2011-12-12",
-                "A to to wgl nwm co to jest"
-        );
-    }
 //    public static ObservableList<BookModel> getDummyBooks(){
 //        ObservableList<BookModel> dummyBooks = FXCollections.observableArrayList();
 //

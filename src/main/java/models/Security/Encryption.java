@@ -6,12 +6,10 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 public class Encryption {
-
-    public static String getSecurePassword_SHA256(String passwordToHash, String salt) {
+    public static String getSecurePassword_SHA256(String passwordToHash) {
         String generatedPassword = null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
-            md.update(salt.getBytes());
             byte[] bytes = md.digest(passwordToHash.getBytes());
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < bytes.length; i++) {
@@ -23,12 +21,4 @@ public class Encryption {
         }
         return generatedPassword;
     }
-
-    private static String getSalt() throws NoSuchAlgorithmException {
-        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
-        byte[] salt = new byte[16];
-        sr.nextBytes(salt);
-        return salt.toString();
-    }
-
 }
