@@ -646,7 +646,7 @@ public class DataAccess {
                             reader.getEmail() + "', '" +
                             reader.getAddress() + "', '" +
                             reader.getCardNr() + "')";*/
-            String query = "CALL update_reader('" + reader.getId() + "', '" +
+            String query = "CALL update_reader('" + reader.getRead_id() + "', '" +
                             reader.getLogin() + "', '" +
                             reader.getPassword() + "', '" +
                             reader.getFirst_name() + "', '" +
