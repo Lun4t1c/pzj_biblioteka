@@ -14,6 +14,7 @@ public class ViewSwitcher {
     private static Parent MainLibraryParent = null;
     private static Parent AddBookParent = null;
     private static Parent BorrowBookParent = null;
+    private static Parent ShellEmployeeParent = null;
     //endregion
 
     private static Scene scene;
@@ -129,6 +130,13 @@ public class ViewSwitcher {
 
                 BorrowBookParent = FXMLLoader.load(ViewSwitcher.class.getResource(view.getFileName()));
                 return BorrowBookParent;
+
+
+            case SHELL_EMPLOYEE:
+                if (ShellEmployeeParent != null) return ShellEmployeeParent;
+
+                ShellEmployeeParent = FXMLLoader.load(ViewSwitcher.class.getResource(view.getFileName()));
+                return ShellEmployeeParent;
         }
 
         return null;

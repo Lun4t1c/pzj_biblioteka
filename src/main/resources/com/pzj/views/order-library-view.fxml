@@ -34,7 +34,7 @@
 <left>
     <AnchorPane maxWidth="520.0" minWidth="520.0" style="-fx-background-color: DCDCDC;">
         <children>
-            <Text fx:id="chooselbl" layoutX="120.0" layoutY="90.0" text="Wybierz Zamówienie!">
+            <Text layoutX="120.0" layoutY="90.0" text="Wybierz Zamówienie!">
                 <font>
                     <Font name="Times New Roman Bold" size="30.0" />
                 </font>
@@ -44,7 +44,7 @@
                     <Font name="Times New Roman" size="17.0" />
                 </font>
             </TextField>
-            <Label fx:id="copylbl" layoutX="50.0" layoutY="200.0" text="kopia:">
+            <Label layoutX="50.0" layoutY="200.0" text="kopia:">
                 <font>
                     <Font name="Times New Roman" size="23.0" />
                 </font>
@@ -54,7 +54,7 @@
                     <Font name="Times New Roman" size="23.0" />
                 </font>
             </Label>
-            <Label fx:id="reservationDatelbl" layoutX="50.0" layoutY="280.0" text="Data rezerwacji:">
+            <Label layoutX="50.0" layoutY="280.0" text="Data rezerwacji:">
                 <font>
                     <Font name="Times New Roman" size="23.0" />
                 </font>
@@ -64,7 +64,7 @@
                     <Font name="Times New Roman" size="23.0" />
                 </font>
             </Label>
-            <Label fx:id="reservationTermlbl" layoutX="50.0" layoutY="360.0" text="Termin rezerwacji:">
+            <Label layoutX="50.0" layoutY="360.0" text="Termin rezerwacji:">
                 <font>
                     <Font name="Times New Roman" size="23.0" />
                 </font>
@@ -74,7 +74,7 @@
                     <Font name="Times New Roman" size="23.0" />
                 </font>
             </Label>
-            <Label fx:id="borrowDatelbl" layoutX="50.0" layoutY="440.0" text="Data wypożyczenia:">
+            <Label layoutX="50.0" layoutY="440.0" text="Data wypożyczenia:">
                 <font>
                     <Font name="Times New Roman" size="23.0" />
                 </font>
@@ -84,7 +84,7 @@
                     <Font name="Times New Roman" size="23.0" />
                 </font>
             </Label>
-            <Label fx:id="borrowTermlbl" layoutX="50.0" layoutY="520.0" text="Termin wypożyczenia:">
+            <Label layoutX="50.0" layoutY="520.0" text="Termin wypożyczenia:">
                 <font>
                     <Font name="Times New Roman" size="23.0" />
                 </font>
@@ -94,7 +94,7 @@
                     <Font name="Times New Roman" size="23.0" />
                 </font>
             </Label>
-            <Label fx:id="returnDatelbl" layoutX="50.0" layoutY="600.0" text="Data zwrotu:">
+            <Label layoutX="50.0" layoutY="600.0" text="Data zwrotu:">
                 <font>
                     <Font name="Times New Roman" size="23.0" />
                 </font>

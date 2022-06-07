@@ -1,5 +1,6 @@
 package controllers;
 
+import com.pzj.Globals;
 import com.pzj.View;
 import com.pzj.ViewSwitcher;
 import dao.DataAccess;
@@ -34,7 +35,14 @@ public class ShellController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        displayMainLibraryView();
+        if (!Globals.getIsLoggedUserEmployee()) {
+            System.out.println("EMPLOEYYEEEDGHSATY");
+            displayMainLibraryView();
+        }
+        else {
+            System.out.println("READEREEDS");
+            displayMainLibraryEmployeeView();
+        }
     }
     //endregion
 
@@ -61,12 +69,18 @@ public class ShellController implements Initializable {
         displayView(View.MAIN_LIBRARY);
     }
 
+
+
+    private void displayMainLibraryEmployeeView() {
+        displayView(View.SHELL_EMPLOYEE);
+    }
+
     /**
      * Display book borrowing view
      */
-    private void displayBorrowBookView(){
+    /*private void displayBorrowBookView(){
         displayView(View.BORROW_BOOK);
-    }
+    }*/
 
     private void displayAddBookView(){
         displayView(View.ADD_BOOK);
@@ -77,13 +91,20 @@ public class ShellController implements Initializable {
     //region Button clicks
     @FXML
     protected void onMainLibraryViewButton(){
-        displayMainLibraryView();
+        if (!Globals.getIsLoggedUserEmployee()) {
+            System.out.println("EMPLOEYYEEEDGHSATY");
+            displayMainLibraryView();
+        }
+        else {
+            System.out.println("READEREEDS");
+            displayMainLibraryEmployeeView();
+        }
     }
 
-    @FXML
+   /* @FXML
     protected void onBorrowBookViewButton(){
         displayBorrowBookView();
-    }
+    }*/
 
     @FXML
     protected void onAddBookViewButton(){

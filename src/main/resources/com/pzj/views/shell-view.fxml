@@ -6,9 +6,8 @@
 <BorderPane minHeight="720.0" minWidth="1800.0" prefHeight="720.0" prefWidth="1800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ShellController">
    <top>
       <VBox prefHeight="25.0" prefWidth="1800.0" BorderPane.alignment="CENTER">
-          <HBox>
+          <HBox style="-fx-background-color: DCDCDC;">
               <Button minWidth="100" onAction="#onMainLibraryViewButton" text="Library" />
-              <Button onAction="#onBorrowBookViewButton" text="Borrow book" />
               <Button onAction="#onAddBookViewButton" text="Add book" />
           </HBox>
       </VBox>

@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import models.AuthorModel;
 import models.BookModel;
 
 import java.net.URL;
@@ -39,7 +40,10 @@ public class MainLibraryController implements Initializable {
     private Label publicationDateValuelbl;
     @FXML
     private Label pagesValuelbl;
+    @FXML
+    private Label warninglbl;
     //endregion
+
 
 
     //region Attributes
@@ -116,12 +120,14 @@ public class MainLibraryController implements Initializable {
     }
 
     private void selectNewBook(BookModel book){
+
+        warninglbl.setText("");
         selectedBook = book;
 
         titletf.setText(book.getTitle());
-        authorValuelbl.setText( String.valueOf(book.getAuthor_id()) );
-        publisherValuelbl.setText( String.valueOf(book.getPublisher_id()) );
-        categoryValuelbl.setText( String.valueOf(book.getCategory_id()) );
+        authorValuelbl.setText( (DataAccess.searchAuthorId(book.getAuthor_id())).getFullName() );
+        publisherValuelbl.setText( (DataAccess.searchPublisherId(book.getPublisher_id())).getName() );
+        categoryValuelbl.setText( (DataAccess.searchCategoryId(book.getCategory_id())).getName() );
         publicationDateValuelbl.setText(book.getPublication_date().toString());
         pagesValuelbl.setText( String.valueOf(book.getPages()) );
     }
@@ -141,10 +147,16 @@ public class MainLibraryController implements Initializable {
     private void sortBooksByPublicationDateDesc(){
         throw new UnsupportedOperationException("YET TO BE IMLPEMENTED");
     }
+
+    private void choose(){
+        warninglbl.setText("WYPOŻYCZONO");
+    }
     //endregion
 
 
     //region Button clicks
-
+    public void onChooseButton(){
+        choose();
+    }
     //endregion
 }

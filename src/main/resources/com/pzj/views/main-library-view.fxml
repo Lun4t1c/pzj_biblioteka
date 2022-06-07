@@ -39,13 +39,16 @@
                         <Font name="Times New Roman Bold" size="30.0" />
                     </font>
                 </Text>
+                <Label fx:id="warninglbl" layoutX="175.0" layoutY="227.0" textFill="#d41c1c">
+                    <font>
+                        <Font name="Times New Roman Bold" size="22.0" />
+                    </font>
+                </Label>
                 <TextField fx:id="titletf" editable="false" layoutX="40.0" layoutY="162.0" prefHeight="40.0" prefWidth="440.0" style="-fx-border-color: black;" text="wybierz z listy...">
                     <font>
                         <Font name="Times New Roman" size="17.0" />
                     </font>
                 </TextField>
-                <ComboBox fx:id="copiesComboBox" layoutX="50.0" layoutY="215.0" minWidth="100" prefHeight="30.0" prefWidth="170.0" promptText="Select Copy" style="-fx-background-color: FFFFFF; -fx-border-color: black;" />
-                <ComboBox fx:id="readerComboBox1" layoutX="300.0" layoutY="215.0" prefHeight="30.0" prefWidth="170.0" promptText="Select Reader" style="-fx-background-color: FFFFFF; -fx-border-color: black;" />
                 <Label fx:id="authorlbl" layoutX="50.0" layoutY="280.0" text="Autor:">
                     <font>
                         <Font name="Times New Roman" size="23.0" />
@@ -96,7 +99,7 @@
                         <Font name="Times New Roman" size="23.0" />
                     </font>
                 </Label>
-                <Button fx:id="chooseButton" layoutX="150.0" layoutY="700.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: FFFFFF; -fx-border-color: black;" text="Wypozycz" />
+                <Button fx:id="chooseButton" layoutX="150.0" layoutY="700.0" onAction="#onChooseButton" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: FFFFFF; -fx-border-color: black;" text="Wypozycz" />
             </children>
          <opaqueInsets>
             <Insets />

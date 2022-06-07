@@ -65,10 +65,7 @@ public class LoginController implements Initializable{
             System.out.println("Login succesfull: " + user.getLogin());
             Globals.setLoggedUser(user);
 
-            if (Globals.getIsLoggedUserEmployee())
-                startupMainShellEmployee();
-            else
-                startupMainShell();
+            startupMainShell();
         }
         else System.out.println("Could not log in");
     }
