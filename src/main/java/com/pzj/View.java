@@ -5,7 +5,10 @@ public enum View {
     BOOK_INSPECTOR("views/book-inspector-view.fxml"),
     BORROW_BOOK("views/borrow-book-view.fxml"),
     ADD_BOOK("views/add-book-view.fxml"),
-    SHELL("views/shell-view.fxml");
+    SHELL("views/shell-view.fxml"),
+    LOGIN("views/login-view.fxml"),
+    REGISTER("views/register-view.fxml")
+    ;
 
     private String fileName;
 

@@ -41,17 +41,31 @@ public class LoginController {
         UserInfoModel user = DataAccess.login(loginTextField.getText(), paswordPasswordField.getText());
         if (user != null){
             System.out.println("Login succesfull: " + user.getLogin());
-            Globals.loggedUser = user;
-            startupMainShell();
+            Globals.setLoggedUser(user);
+
+            if (Globals.getIsLoggedUserEmployee())
+                startupMainShellEmployee();
+            else
+                startupMainShell();
         }
-        else System.out.println("Couldn log in");
+        else System.out.println("Could not log in");
     }
 
     private void register(){
+        Stage stage = (Stage) loginbtn.getScene().getWindow();
+        stage.close();
 
+        ViewSwitcher.openWindow(View.REGISTER);
     }
 
     private void startupMainShell(){
+        Stage stage = (Stage) loginbtn.getScene().getWindow();
+        stage.close();
+
+        ViewSwitcher.openWindow(View.SHELL);
+    }
+
+    private void startupMainShellEmployee(){
         Stage stage = (Stage) loginbtn.getScene().getWindow();
         stage.close();
 
@@ -66,7 +80,7 @@ public class LoginController {
     }
 
     public void onregisterbtn(){
-
+        register();
     }
     //endregion
 }

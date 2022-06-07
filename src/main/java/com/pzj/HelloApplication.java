@@ -17,18 +17,8 @@ public class HelloApplication extends Application {
         stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
+
         ViewSwitcher.initialize();
-
-
-        /*
-        var scene = new Scene(new Pane());
-
-        ViewSwitcher.setScene(scene);
-        ViewSwitcher.switchTo(View.MAIN_LIBRARY);
-
-        stage.setScene(scene);
-        stage.show();
-        */
     }
 
     public static void main(String[] args) {

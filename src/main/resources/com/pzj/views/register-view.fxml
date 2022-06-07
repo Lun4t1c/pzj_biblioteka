@@ -14,7 +14,7 @@
                         <Font size="80.0" />
                     </font>
                 </Label>
-                <RadioButton fx:id="employerRadioButton" layoutX="80.0" layoutY="200.0" mnemonicParsing="false" text="Rejestracja pracownika" />
+                <CheckBox fx:id="employerCheckBox" layoutX="80.0" layoutY="200.0" mnemonicParsing="false" text="Rejestracja pracownika" />
                 <Label layoutX="80.0" layoutY="240.0" text="Login:">
                     <font>
                         <Font size="25.0" />
@@ -65,11 +65,11 @@
                         <Font size="20.0" />
                     </font>
                 </PasswordField>
-                <Button fx:id="backButton" layoutX="190.0" layoutY="586.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: red;" text="Cofnij">
+                <Button fx:id="backButton" onAction="#onbackButton" layoutX="190.0" layoutY="586.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: red;" text="Cofnij">
                     <font>
                         <Font name="Times New Roman" size="18.0" />
                     </font></Button>
-                <Button fx:id="registerButton" layoutX="490.0" layoutY="586.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: green;" text="Zarejestruj">
+                <Button fx:id="registerButton" onAction="#onregisterButton" layoutX="490.0" layoutY="586.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: green;" text="Zarejestruj">
                     <font>
                         <Font name="Times New Roman" size="18.0" />
                     </font></Button>

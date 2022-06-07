@@ -561,16 +561,16 @@ public class DataAccess {
     public static void insertReader(ReaderModel reader){
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
-            String query = "CALL insert_reader(" + reader.getLogin() + ", " +
-                            reader.getPassword() + ", " +
-                            reader.getFirst_name() + ", " +
-                            reader.getSecond_name() + ", " +
-                            reader.getSurname() + ", " +
-                            reader.getPhone() + ", " +
-                            reader.getEmail() + ", " +
-                            reader.getAddress() + ", " +
-                            reader.getRegistration_date() + ", " +
-                            reader.getCardNr() + ")";
+            String query = "CALL insert_reader('" + reader.getLogin() + "', '" +
+                            reader.getPassword() + "', '" +
+                            reader.getFirst_name() + "', '" +
+                            reader.getSecond_name() + "', '" +
+                            reader.getSurname() + "', '" +
+                            reader.getPhone() + "', '" +
+                            reader.getEmail() + "', '" +
+                            reader.getAddress() + "', '" +
+                            reader.getRegistration_date() + "', '" +
+                            reader.getCardNr() + "')";
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
             connection.close();
@@ -592,16 +592,16 @@ public class DataAccess {
     public static void updateReader(ReaderModel reader) { // (int id, String login, String password, String first_name, String second_name, String surname, String phone, String email, String address, String card_nr) {
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
-            String query = "CALL update_reader(" + reader.getId() + ", " +
-                            reader.getLogin() + ", " +
-                            reader.getPassword() + ", " +
-                            reader.getFirst_name() + ", " +
-                            reader.getSecond_name() + ", " +
-                            reader.getSurname() + ", " +
-                            reader.getPhone() + ", " +
-                            reader.getEmail() + ", " +
-                            reader.getAddress() + ", " +
-                            reader.getCardNr() + ")";
+            String query = "CALL update_reader('" + reader.getId() + "', '" +
+                            reader.getLogin() + "', '" +
+                            reader.getPassword() + "', '" +
+                            reader.getFirst_name() + "', '" +
+                            reader.getSecond_name() + "', '" +
+                            reader.getSurname() + "', '" +
+                            reader.getPhone() + "', '" +
+                            reader.getEmail() + "', '" +
+                            reader.getAddress() + "', '" +
+                            reader.getCardNr() + "')";
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
             connection.close();
@@ -644,16 +644,16 @@ public class DataAccess {
     public static void insertEmployee(EmployeeModel employee){
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
-            String query = "CALL insert_employee( " + employee.getLogin() + ", " +
-                            employee.getPassword() + ", " +
-                            employee.getFirst_name() + ", " +
-                            employee.getSecond_name() + ", " +
-                            employee.getSurname() + ", " +
-                            employee.getPhone() + ", " +
-                            employee.getEmail() + ", " +
-                            employee.getAddress() + ", " +
-                            employee.getRegistration_date() + ", " +
-                            employee.getPosition() + ")";
+            String query = "CALL insert_employee( '" + employee.getLogin() + "', '" +
+                            employee.getPassword() + "', '" +
+                            employee.getFirst_name() + "', '" +
+                            employee.getSecond_name() + "', '" +
+                            employee.getSurname() + "', '" +
+                            employee.getPhone() + "', '" +
+                            employee.getEmail() + "', '" +
+                            employee.getAddress() + "', '" +
+                            employee.getRegistration_date() + "', '" +
+                            employee.getPosition() + "')";
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
             connection.close();

@@ -53,8 +53,8 @@ public class ViewSwitcher {
             );
 
             Stage stage = new Stage();
-            stage.setTitle("New window");
             stage.setScene(new Scene(root, 700, 700));
+            stage.setMaximized(true);
             stage.show();
         }
         catch (IOException e) {

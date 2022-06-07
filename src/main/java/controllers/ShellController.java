@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 public class ShellController implements Initializable {
 
     //region Attributes
-    private UserInfoModel loggedUser;
+
     //endregion
 
 
@@ -33,7 +33,7 @@ public class ShellController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        displayMainLibraryView();
     }
     //endregion
 
