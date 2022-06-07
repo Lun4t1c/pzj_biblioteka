@@ -396,6 +396,34 @@ public class DataAccess {
         }
         return null;
     }
+
+    public static BookModel searchBookId (int book_id) {
+        BookModel book = null;
+        try {
+            conn = DriverManager.getConnection(url, user, password);
+            String query = "SELECT * FROM PUBLIC.\"Book\" WHERE id = " + book_id;
+            PreparedStatement statement = conn.prepareStatement(query);
+            ResultSet sqlReturnValues = statement.executeQuery();
+            ObservableList<BookModel> books = FXCollections.observableArrayList();
+
+            while (sqlReturnValues.next()) {
+                book =  new BookModel(sqlReturnValues.getInt("id"),
+                        sqlReturnValues.getString("isbn"),
+                        sqlReturnValues.getString("title"),
+                        sqlReturnValues.getInt("publisher_id"),
+                        sqlReturnValues.getInt("author_id"),
+                        sqlReturnValues.getInt("category_id"),
+                        sqlReturnValues.getString("publication_date"),
+                        sqlReturnValues.getInt("lang_id"),
+                        sqlReturnValues.getInt("pages"));
+            }
+            // return book;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return book;
+    }
+
     public static void insertBook(BookModel book) {
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
