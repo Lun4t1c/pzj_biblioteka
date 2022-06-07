@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 abstract public class UserInfoModel {
     //region Attributes
-    private int id;
+    private int user_info_id;
     private String login;
     private String password;
     private String first_name;
@@ -18,7 +18,7 @@ abstract public class UserInfoModel {
 
     //region Constructors
 
-    UserInfoModel(int id,
+    UserInfoModel(int user_info_id,
                   String login,
                   String password,
                   String first_name,
@@ -28,7 +28,7 @@ abstract public class UserInfoModel {
                   String email,
                   String address,
                   String registration_date) {
-        setId(id);
+        setUser_info_id(user_info_id);
         setLogin(login);
         setPassword(password);
         setFirst_name(first_name);
@@ -42,10 +42,10 @@ abstract public class UserInfoModel {
     //endregion
 
     //region Get/Set
-    public int getId() { return id; }
+    public int getUser_info_id() { return user_info_id; }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUser_info_id(int read_id) {
+        this.user_info_id = read_id;
     }
 
     public String getLogin() {
